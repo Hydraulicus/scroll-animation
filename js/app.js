@@ -1,15 +1,7 @@
-const myScrollTimeline = new ScrollTimeline({
+const scrollTimeline = new ScrollTimeline({
   source: document.documentElement,
-  scrollSource: document.scrollingElement, // For legacy implementations
+  scrollSource: document.getElementById("SVG_wrapper"), // For legacy implementations
   orientation: 'block',
-  scrollOffsets: [
-    new CSSUnitValue(0, 'percent'),
-    new CSSUnitValue(100, 'percent'),
-    //     new CSSUnitValue(50, 'percent'),
-    //     new CSSUnitValue(80, 'percent'),
-    //     { target: document.getElementById("SVG_wrapper"), edge: 'end', threshold: 0.5 },
-    //     { target: document.getElementById("SVG_wrapper"), edge: 'end', threshold: 0.75 },
-  ],
 });
 
 class ScrollAnimation {
@@ -37,49 +29,102 @@ class ScrollAnimation {
             { transform: ['scaleX(0)', 'scaleX(1)'], },
             { duration: 1, fill: 'forwards' }
         ),
-        myScrollTimeline
+        scrollTimeline
     ).play();
-
   }
 
   main() {
-    // const myScrollTimeline = new ScrollTimeline({
-    //   source: document.documentElement,
-    //   orientation: 'block',
-    //   scrollOffsets: [
-    //     new CSSUnitValue(50, 'percent'),
-    //     new CSSUnitValue(80, 'percent'),
-    //   ],
-    // });
+    const DURATION = 1;
 
-    const images = document.querySelectorAll("#b_idea");
+    const commonProps = {
+      duration: DURATION,
+      fill: "both",
+      easing: "ease-in-out",
+      timeline: scrollTimeline,
+      rangeStart: "cover 0%",
+      rangeEnd: "cover 25%",
+    }
 
-    images.forEach((image) => {
-      image.animate(
-          {
-            // opacity: [0.05, 1],
-            transform: ['translateY(0px)', `translateY(${350}px)`],
-            // transform: ['translateX(0)', 'translateX(50)'],
-            // clipPath: ['inset(45% 20% 45% 20%)', 'inset(0% 0% 0% 0%)'],
-          },
-          {
-            duration: 1,
-            fill: "both",
-            // timeline: new ScrollTimeline({
-            //   scrollSource: document.documentElement,
-            //   timeRange: 1,
-            //   fill: "both",
-            //   scrollOffsets: [
-            //     { target: image, edge: 'end', threshold: 0.5 },
-            //     { target: image, edge: 'end', threshold: 0.75 },
-            //   ],
-            // }),
-            timeline: myScrollTimeline
-          }
+    /** INITIAL CONSULTATION , DISCOVERY CALL */
+    document.getElementById("b_idea").animate([
+      {transform: "translate3d(0px, 0px, 0px) scale(1)" },
+      {transform: "translate3d(30px, 380px, 0px) scale(0.65)" },
+
+    ], {...commonProps,})
+
+    document.getElementById("b_-2").animate(
+        [
+          {transform: "translate3d(0px, 0px, 0px) scale(1)" },
+          {transform: "translate3d(15px, 260px, 0px) scale(0.75)" },
+        ],
+        {...commonProps,},
+    );
+    document.getElementById("arrow0").animate(
+        [
+          {transform: "translate3d(0px, 0px, 0px) scale(1)" },
+          {transform: "translate3d(30px, 290px, 0px) scale(0.75)" },
+        ],
+        {...commonProps,},
+    );
+    document.getElementById("arrow1").animate(
+        [
+          {transform: "translate3d(0px, 0px, 0px) scale(1)" },
+          {transform: "translate3d(40px, 260px, 0px) scale(0.6)" },
+        ],
+        {...commonProps,},
+    );
+    document.getElementById("arrow_to_DESIGN_SERVICE").animate(
+        [
+          {d: "path('M201.33,248.76 L252.61,248.76 L252.61,540 L272.71,540')"},
+          {d: "path('M201.33,540 L252.61,540 L252.61,540 L272.71,540')" },
+        ],
+        {...commonProps},
+    );
+    console.log(document.getElementById("arrow_to_DESIGN_SERVICE"))
+
+
+    /***/
+
+
+    /** POST-INSTALL SURVEY , PHOTOGRAPH PROJECT*/
+    /** POST-INSTALL SURVEY */
+    const b0 = document.getElementById("b_-24");
+        b0.animate(
+        [
+          {transform: "translate3d(0px, 0px, 0px) scale(1)", display: "initial" },
+          {transform: "translate3d(220px, 0px, 0px) scale(1)", display: "none"},
+        ],
+        {...commonProps},
+    )
+            // .onfinish = ()=>{b0.style.opacity = '0';};
+
+    document.getElementById("arrow3").animate(
+        [
+          {transform: "translate3d(0px, 0px, 0px) scale(1)", display: "initial" },
+          {transform: "translate3d(130px, 0px, 0px) scale(1)", display: "none" },
+        ],
+        {...commonProps},
+    );
+    /***/
+      /** PHOTOGRAPH PROJECT */
+      document.getElementById("b_-23").animate(
+          [
+              {transform: "translate3d(0px, 0px, 0px) scale(1)", display: "initial" },
+              {transform: "translate3d(0px, -470px, 0px) scale(1)", display: "none"},
+          ],
+          {...commonProps, rangeStart: "cover 25%", rangeEnd: "cover 50%",},
+      )
+      // .onfinish = ()=>{b0.style.opacity = '0';};
+
+      document.getElementById("arrow-PHOTOGRAPH-PROJECT").animate(
+          [
+              {transform: "translate3d(0px, 0px, 0px) scale(1, 1)" },
+              {transform: "translate3d(0px, 500px, 0px) scale(1, 0.05)" },
+          ],
+          {...commonProps, rangeStart: "cover 25%", rangeEnd: "cover 50%",},
       );
-    });
-
-
+      /***/
+    /***/
   }
 }
 
@@ -92,91 +137,3 @@ const scrollAnimation = new ScrollAnimation();
 scrollAnimation.init({})
     .then(scrollAnimation.progressBar)
     .then(scrollAnimation.main)
-
-var div = document.querySelector("#SVG_wrapper");
-var div_status = document.querySelector("#div_status");
-var start = 800;
-var stop = 1400;
-var swap = false;
-  var rect = div.getBoundingClientRect();
-  console.log(rect, div)
-window.addEventListener("scroll", function() {
-  var y = window.scrollY
-  const top = div.getBoundingClientRect().top + document.documentElement.scrollTop - div.ownerDocument.documentElement.clientTop
-  console.log('y=', y,  'top=', top)
-  div_status.innerText = rect.top.toFixed() + " " + y.toFixed()
-  // div.classList.toggle("sticky", (y > top) && (y < top+100));
-
-  if (y >= top && y <= 1600) {
-    console.log(' add ')
-    div.classList.add("sticky")
-    div.style.transform = `translate3d(0, ${top}px, 0)`;
-    // div.style.transform = `translate3d(0, 0, 0)`
-  }
-
-  if (y > 1600 || y < 700) {
-    console.log(' remove ')
-    div.classList.remove("sticky")
-    // div.style.transform = `translate3d(0, 0, 0)`
-  }
-
-
-  // if (y >= start && y <= stop) {
-  //
-  //   div_status.style.background = "green"
-  //   if (!swap) {
-  //     div.style.position = "fixed";
-  //
-  //     div.style.top = rect.top + "px"
-  //     swap = true
-  //   }
-  // } else {
-  //   div_status.style.background = "red"
-  //   if (swap) {
-  //
-  //     div.style.position = "absolute";
-  //     div.style.top = (y + rect.top) + "px"
-  //     swap = false;
-  //   }
-  //
-  // }
-})
-
-const scrollable = document.querySelector('.scrollable');
-const stickyProject = document.querySelector('.project');
-let current = 0;
-let target = 0;
-const ease = 0.1;
-
-// function lerp(start, end, t) {
-//   return start * (1 - t) + end * t;
-// }
-//
-// function init() {
-//   document.body.style.height = `${scrollable.getBoundingClientRect().height}px`;
-// }
-//
-// function smoothScroll() {
-//   target = window.scrollY;
-//   current = lerp(current, target, ease);
-//   if (Math.abs(current) >= 1) {
-//     scrollable.style.transform = `translate3d(0, ${-current }px, 0)`;
-//   }
-//   sticky();
-//   window.requestAnimationFrame(smoothScroll);
-// }
-//
-// function sticky() {
-//   let offset = window.innerHeight
-//   console.log(' current=', current, ' offset=', offset);
-//   if (current < offset) {
-//     stickyProject.style.transform = `translate3d(0, 0, 0)`;
-//   }
-//   if (current >= offset) {
-//     stickyProject.style.transform = `translate3d(0, ${current - offset}px, 0)`;
-//   }
-// }
-//
-// init()
-// smoothScroll()
-
