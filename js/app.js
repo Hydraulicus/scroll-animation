@@ -90,52 +90,57 @@ const scrollAnimation = new ScrollAnimation();
 // });
 
 scrollAnimation.init({})
-    // .then(scrollAnimation.progressBar)
-    // .then(scrollAnimation.main)
+    .then(scrollAnimation.progressBar)
+    .then(scrollAnimation.main)
 
-// var div = document.querySelector("#SVG_wrapper");
-// var div_status = document.querySelector("#div_status");
-// var start = 800;
-// var stop = 1400;
-// var swap = false;
-//   var rect = div.getBoundingClientRect();
-//   console.log(rect, div)
-// window.addEventListener("scroll", function() {
-//   var y = window.scrollY
-//   const top = div.getBoundingClientRect().top + document.documentElement.scrollTop - div.ownerDocument.documentElement.clientTop
-//   console.log(y,  'top=', top)
-//   div_status.innerText = rect.top.toFixed() + " " + y.toFixed()
-//   div.classList.toggle("sticky", (y > top) && (y < top+100));
-//
-//   // if (y >= top && y <= top+200) {
-//   //   console.log(' add ')
-//   //   div.classList.add("sticky")
-//   // } else {
-//   //   console.log(' remove ')
-//   //   div.classList.remove("sticky")
-//   // }
-//
-//
-//   // if (y >= start && y <= stop) {
-//   //
-//   //   div_status.style.background = "green"
-//   //   if (!swap) {
-//   //     div.style.position = "fixed";
-//   //
-//   //     div.style.top = rect.top + "px"
-//   //     swap = true
-//   //   }
-//   // } else {
-//   //   div_status.style.background = "red"
-//   //   if (swap) {
-//   //
-//   //     div.style.position = "absolute";
-//   //     div.style.top = (y + rect.top) + "px"
-//   //     swap = false;
-//   //   }
-//   //
-//   // }
-// })
+var div = document.querySelector("#SVG_wrapper");
+var div_status = document.querySelector("#div_status");
+var start = 800;
+var stop = 1400;
+var swap = false;
+  var rect = div.getBoundingClientRect();
+  console.log(rect, div)
+window.addEventListener("scroll", function() {
+  var y = window.scrollY
+  const top = div.getBoundingClientRect().top + document.documentElement.scrollTop - div.ownerDocument.documentElement.clientTop
+  console.log('y=', y,  'top=', top)
+  div_status.innerText = rect.top.toFixed() + " " + y.toFixed()
+  // div.classList.toggle("sticky", (y > top) && (y < top+100));
+
+  if (y >= top && y <= 1600) {
+    console.log(' add ')
+    div.classList.add("sticky")
+    div.style.transform = `translate3d(0, ${top}px, 0)`;
+    // div.style.transform = `translate3d(0, 0, 0)`
+  }
+
+  if (y > 1600 || y < 700) {
+    console.log(' remove ')
+    div.classList.remove("sticky")
+    // div.style.transform = `translate3d(0, 0, 0)`
+  }
+
+
+  // if (y >= start && y <= stop) {
+  //
+  //   div_status.style.background = "green"
+  //   if (!swap) {
+  //     div.style.position = "fixed";
+  //
+  //     div.style.top = rect.top + "px"
+  //     swap = true
+  //   }
+  // } else {
+  //   div_status.style.background = "red"
+  //   if (swap) {
+  //
+  //     div.style.position = "absolute";
+  //     div.style.top = (y + rect.top) + "px"
+  //     swap = false;
+  //   }
+  //
+  // }
+})
 
 const scrollable = document.querySelector('.scrollable');
 const stickyProject = document.querySelector('.project');
@@ -143,35 +148,35 @@ let current = 0;
 let target = 0;
 const ease = 0.1;
 
-function lerp(start, end, t) {
-  return start * (1 - t) + end * t;
-}
-
-function init() {
-  document.body.style.height = `${scrollable.getBoundingClientRect().height}px`;
-}
-
-function smoothScroll() {
-  target = window.scrollY;
-  current = lerp(current, target, ease);
-  if (Math.abs(current) >= 1) {
-    scrollable.style.transform = `translate3d(0, ${-current }px, 0)`;
-  }
-  sticky();
-  window.requestAnimationFrame(smoothScroll);
-}
-
-function sticky() {
-  let offset = window.innerHeight
-  console.log(' current=', current, ' offset=', offset);
-  if (current < offset) {
-    stickyProject.style.transform = `translate3d(0, 0, 0)`;
-  }
-  if (current >= offset) {
-    stickyProject.style.transform = `translate3d(0, ${current - offset}px, 0)`;
-  }
-}
-
-init()
-smoothScroll()
+// function lerp(start, end, t) {
+//   return start * (1 - t) + end * t;
+// }
+//
+// function init() {
+//   document.body.style.height = `${scrollable.getBoundingClientRect().height}px`;
+// }
+//
+// function smoothScroll() {
+//   target = window.scrollY;
+//   current = lerp(current, target, ease);
+//   if (Math.abs(current) >= 1) {
+//     scrollable.style.transform = `translate3d(0, ${-current }px, 0)`;
+//   }
+//   sticky();
+//   window.requestAnimationFrame(smoothScroll);
+// }
+//
+// function sticky() {
+//   let offset = window.innerHeight
+//   console.log(' current=', current, ' offset=', offset);
+//   if (current < offset) {
+//     stickyProject.style.transform = `translate3d(0, 0, 0)`;
+//   }
+//   if (current >= offset) {
+//     stickyProject.style.transform = `translate3d(0, ${current - offset}px, 0)`;
+//   }
+// }
+//
+// init()
+// smoothScroll()
 
