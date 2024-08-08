@@ -134,7 +134,7 @@ class ScrollAnimation {
             )
 
         /** DESIGN PRESENTATION, CLIENT INPUT*/
-        document.querySelectorAll("#b_-28, #arrow_to_CLIENT_INPUT, #arrow_to_DESIGN_PRESENTATION")
+        document.querySelectorAll("#b_-28, #arrow_to_CLIENT_INPUT")
             .forEach((el) => el.animate(
                     [
                         {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
@@ -154,11 +154,16 @@ class ScrollAnimation {
                 // {transform: "translate3d(180px, 0px, 0px)", opacity: 0, display: "none"},
             ], {...commonProps});
 
-        document.querySelector("#arrow_to_DESIGN_PRESENTATION").animate(
-            [
-                {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
-                {transform: "translate3d(200px, 50px, 0px)", opacity: 0, display: "none"},
-            ], {...commonProps, rangeEnd: "cover 15%"});
+        document.querySelector("#arrow_to_DESIGN_PRESENTATION path").animate([
+            {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
+            {transform: "translate3d(55px, 0px, 0px)", opacity: 0, display: "none"},
+        ], {...commonProps, rangeEnd: "cover 10%"});
+
+        document.querySelector("#arrow_to_DESIGN_PRESENTATION line").animate([
+                {transform: "translate3d(0px, 0px, 0px)"},
+                {transform: "translate3d(190px, -30px, 0px)"},
+                {transform: "translate3d(190px, -30px, 0px)"},
+            ], {...commonProps, rangeEnd: "cover 25%"});
 
 
         document.querySelector("#arrow_to_SOURCING_SELECTING path:first-child").animate(
@@ -358,14 +363,23 @@ class ScrollAnimation {
             ], {...commonProps, rangeEnd: "cover 13%"},
         );
 
-        document.querySelectorAll(" #b_-25, #arrow_to_ITEMS_SHIPPED, #arrow_to_ORDER_PLACED path")
+        document.querySelectorAll(" #b_-25, #arrow_to_ITEMS_SHIPPED, #arrow_to_ORDER_PLACED path:last-child")
             .forEach((el) => el.animate([
                     {transform: "translate3d(0px, 0px, 0px)"},
                     {transform: "translate3d(0px, -198px, 0px)"},
                     {transform: "translate3d(0px, -198px, 0px)"},
                 ], {...commonProps},
             ))
-        /***/
+
+        document.querySelector("#arrow_to_ORDER_PLACED path:first-child").animate([
+                {d: "path('M1386.17,291.76 L1272.91,291.76 L1272.91,469.23 L1251.01,469.23')"},
+                {d: "path('M1386.17,291.76 L1272.91,291.76 L1272.91,270 L1251.01,270')"},
+                {d: "path('M1386.17,291.76 L1272.91,291.76 L1272.91,270 L1251.01,270')"},
+            ],
+            {...commonProps, rangeEnd: "cover 25%"},
+        );
+
+            /***/
 
         /** SOURCING AND SELECTING, DEVELOP DRAWINGS */
         document.querySelectorAll(" #b_-26")
@@ -374,7 +388,7 @@ class ScrollAnimation {
                     {transform: "translate3d(396px, 0px, 0px)", opacity: 1, display: "initial"},
                     {transform: "translate3d(396px, 0px, 0px)", opacity: 0, display: "initial"},
                     {transform: "translate3d(396px, 0px, 0px)", opacity: 0, display: "none"},
-                ], {...commonProps, rangeStart: "cover 40%", rangeEnd: "cover 60%"},
+                ], {...commonProps, rangeStart: "cover 40%", rangeEnd: "cover 55%"},
             ))
         document.querySelectorAll("#b_-29")
             .forEach((el) => el.animate([
