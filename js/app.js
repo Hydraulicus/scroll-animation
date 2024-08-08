@@ -134,23 +134,64 @@ class ScrollAnimation {
         )
 
       /** DESIGN PRESENTATION, CLIENT INPUT*/
-      document.querySelectorAll("#b_-27, #b_-28, #arrow_to_CLIENT_INPUT, #arrow_to_DESIGN_PRESENTATION")
+      document.querySelectorAll("#b_-28, #arrow_to_CLIENT_INPUT, #arrow_to_DESIGN_PRESENTATION")
           .forEach((el) => el.animate(
           [
-              {transform: "translate3d(0px, 0px, 0px) scale(1)"},
-              {transform: "translate3d(190px, 0px, 0px) scale(1)"},
+              {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
+              {transform: "translate3d(100px, 0px, 0px)", opacity: 1, display: "initial"},
+              {transform: "translate3d(100px, -187px, 0px)", opacity: 1, display: "initial"},
+              {transform: "translate3d(338px, -187px, 0px)", opacity: 1, display: "initial"},
+              {transform: "translate3d(338px, -187px, 0px)", opacity: 0, display: "none"},
           ],
-          {...commonProps},
+          {...commonProps, rangeEnd: "cover 50%"},
       )
       )
 
-      document.getElementById("arrow_to_SOURCING_SELECTING").animate(
+      document.querySelector("#b_-27").animate(
+          [
+              {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
+              {transform: "translate3d(525px, 0px, 0px)", opacity: 1, display: "initial"},
+              // {transform: "translate3d(180px, 0px, 0px)", opacity: 0, display: "none"},
+          ], {...commonProps});
+
+      document.querySelector("#arrow_to_DESIGN_PRESENTATION").animate(
+          [
+              {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
+              {transform: "translate3d(200px, 50px, 0px)", opacity: 0, display: "none"},
+          ], {...commonProps, rangeEnd: "cover 15%"});
+
+
+      document.querySelector("#arrow_to_SOURCING_SELECTING path:first-child").animate(
           [
               {d: "path('M411.27,957.52 L411.27,803.42 L654.95,803.42')"},
-              {d: "path('M601.27,957.52 L601.27,803.42 L654.95,803.42')" },
+              {d: "path('M505,957.52 L505,803.42 L654.95,803.42')", display: "initial" },
+              {d: "path('M505,957.52 L505,803.42 L654.95,803.42')", display: "initial" },
+              {d: "path('M505,803.42 L505,803.42 L654.95,803.42')", display: "initial" },
+              {d: "path('M654,803.42 L654,803.42 L654.95,803.42')", display: "initial" },
+              {d: "path('M654,803.42 L654,803.42 L654.95,803.42')", display: "none" },
           ],
-          {...commonProps},
+          {...commonProps, rangeEnd: "cover 45%"},
       );
+      document.querySelector(" #arrow_to_SOURCING_SELECTING path:last-child").animate(
+          [
+              {opacity: 1, display: "initial" },
+              {opacity: 1, display: "none" },
+          ], {...commonProps, rangeEnd: "cover 30%"});
+
+      document.querySelector("#line_DEVELOP_to_SOURCING").animate(
+          [
+              {clipPath: 'inset(0 0 0 0)', display: "initial"},
+              {clipPath: 'inset(0 0 50% 0)', display: "initial"},
+              {clipPath: 'inset(0 0 100% 0)', display: "initial"},
+          ],
+          {...commonProps});
+      document.querySelector("#arrow_to_CLIENT_INPUT").animate(
+          [
+              {clipPath: 'inset(0 0 0 0)', display: "initial"},
+              {clipPath: 'inset(0 50% 0 0)', display: "initial"},
+              {clipPath: 'inset(0 100% 0 0)', display: "initial"},
+          ],
+          {...commonProps});
       /***/
 
       /** BUDGET ESTIMATE*/
@@ -310,6 +351,16 @@ class ScrollAnimation {
               {transform: "translate3d(0px, -198px, 0px)"},
               {transform: "translate3d(0px, -198px, 0px)"},
               ], {...commonProps},
+          ))
+      /***/
+
+      /** SOURCING AND SELECTING */
+        document.querySelectorAll(" #b_-26")
+          .forEach((el) => el.animate([
+              {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
+              {transform: "translate3d(396px, 0px, 0px)", opacity: 1, display: "initial"},
+              {transform: "translate3d(396px, 0px, 0px)", opacity: 0, display: "none"},
+              ], {...commonProps, rangeStart: "cover 50%", rangeEnd: "cover 75%"},
           ))
       /***/
   }
