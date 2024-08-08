@@ -153,6 +153,34 @@ class ScrollAnimation {
       );
       /***/
 
+      /** BUDGET ESTIMATE*/
+      document.querySelectorAll("#b_")
+          .forEach((el) => el.animate([
+              {transform: "translate3d(0px, 0px, 0px)", display: "initial"},
+              {transform: "translate3d(420px, 0px, 0px)", display: "initial"},
+              {transform: "translate3d(420px, 330px, 0px)", display: "none"},
+          ],
+          {...commonProps, rangeEnd: "cover 30%"},
+      ));
+
+      document.querySelector("#arrow_to_BUDGET_ESTIMATE path").animate(
+          [
+              {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
+              {transform: "translate3d(300px, 0px, 0px)", opacity: 1, display: "initial"},
+              {transform: "translate3d(300px, 0px, 0px)", opacity: 0, display: "initial"},
+              {transform: "translate3d(320px, 0px, 0px)", opacity: 0, display: "none"},          ],
+          {...commonProps, rangeEnd: "cover 25%"},
+      );
+      document.querySelector("#arrow_to_BUDGET_ESTIMATE polyline").animate(
+          [
+              {clipPath: 'inset(0 0 0 0)', display: "initial"},
+              {clipPath: 'inset(0 0 0 95% )', display: "initial"},
+              {clipPath: 'inset(100% 0  0 100%)', display: "initial"},
+          ],
+          {...commonProps, rangeEnd: "cover 30%"},
+      );
+      /***/
+
       /** SPECIFICATION NOTEBOOK, BUDGET UPDATE */
       document.querySelector("#b_-10").animate([
               {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
