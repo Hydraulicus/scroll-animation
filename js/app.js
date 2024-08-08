@@ -196,6 +196,58 @@ class ScrollAnimation {
               {...commonProps},
           ))
       /***/
+      /** SITE SURVEY, RESEARCH, CONCEPTUAL DESIGN PRESENTATION */
+      document.querySelector("#b_-30").animate([
+              {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
+              {transform: "translate3d(-131px, 0px, 0px)", opacity: 1, display: "initial"},
+              {transform: "translate3d(-131px, -156px, 0px)", opacity: 1, display: "none"},
+          ], {...commonProps, rangeEnd: "cover 25%"},
+      )
+      document.querySelector("#b_research").animate([
+              {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
+              {transform: "translate3d(-131px, 0px, 0px)", opacity: 1, display: "initial"},
+              {transform: "translate3d(-131px, 220px, 0px)", opacity: 1, display: "none"},
+          ], {...commonProps, rangeEnd: "cover 25%"},
+      )
+      document.querySelectorAll("#b_scanspace-3, #arrow_to_CONCEPTUAL_DESIGN_PRESENTATION")
+          .forEach((el) => el.animate([
+              {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
+              {transform: "translate3d(0, -50px, 0px)", opacity: 1, display: "initial"},
+          ], {...commonProps, rangeEnd: "cover 25%"},
+      ))
+      document.querySelectorAll("#arrow_to_SITE_SURVAEY path, #arrow_to_REASERCH path")
+          .forEach((el) => el.animate(
+          [
+              {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
+              {transform: "translate3d(-23px, 0px, 0px)", opacity: 1, display: "initial"},
+              {transform: "translate3d(-23px, 0px, 0px)", opacity: 0, display: "none"},
+          ],
+          {...commonProps, rangeEnd: "cover 10%"},
+      ))
+      document.querySelector("#arrow_to_REASERCH polyline").animate([
+                  {clipPath: 'inset(0 0 0 0)', display: "initial"},
+                  {clipPath: 'inset(0% 75% 0 0)', display: "initial"},
+                  {clipPath: 'inset(100% 100% 0 0)', display: "none"},
+              ],
+              {...commonProps, rangeEnd: "cover 22%"},
+          )
+      document.querySelectorAll("#arrow_to_SITE_SURVAEY polyline:first-child")
+          .forEach((el) => el.animate(
+              [
+                  {clipPath: 'inset(0 0 0 0)', display: "initial"},
+                  {clipPath: 'inset(0 50% 0 0)', display: "initial"},
+                  {clipPath: 'inset(0 50%  100% 0)', display: "none"},
+              ],
+              {...commonProps, rangeEnd: "cover 22%"},
+          ))
+      document.querySelector("#line_RESERCH_SITE_SURVAEY").animate([
+              {d: "path('M628.59,324.26 L666.03,324.26 L666.03,698.16 L628.59,698.03')"},
+              {d: "path('M490,324.26 L666.03,324.26 L666.03,698.16 L490,698.03')"},
+              {d: "path('M498.59,542 L666.03,542 L666.03,542 L490,542')" },
+              ],
+              {...commonProps, rangeEnd: "cover 25%"},
+          )
+      /***/
   }
 }
 
