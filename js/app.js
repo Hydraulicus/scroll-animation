@@ -122,15 +122,16 @@ class ScrollAnimation {
       /***/
     /***/
 
-    /** CONCEPTUAL DESIGN PRESENTATION */
-    document.querySelector("#b_scanspace-3 rect:first-child").animate(
+    /** DESIGN SERVICE, CONCEPTUAL DESIGN PRESENTATION, FINAL INVOiCES, FINAL DESIGN */
+    document.querySelectorAll("#b_scanspace rect:first-child, #b_scanspace-3 rect:first-child, #b_-8 rect:first-child, #b_-15 rect:first-child")
+        .forEach((el) =>el.animate(
         [
           {fill: "#ffffff" },
-          {fill: "#ff8d0e"},
+          {fill: "#11800e"},
         ],
-        {...commonProps},
+        {...commonProps, rangeStart: "cover 25%", rangeEnd: "cover 75%"},
     )
-    /***/
+        )
 
       /** DESIGN PRESENTATION, CLIENT INPUT*/
       document.querySelectorAll("#b_-27, #b_-28, #arrow_to_CLIENT_INPUT, #arrow_to_DESIGN_PRESENTATION")
@@ -151,23 +152,49 @@ class ScrollAnimation {
           {...commonProps},
       );
       /***/
-      // document.getElementById("b_-23").animate(
-      //     [
-      //         {transform: "translate3d(0px, 0px, 0px) scale(1)", display: "initial" },
-      //         {transform: "translate3d(0px, -470px, 0px) scale(1)", display: "none"},
-      //     ],
-      //     {...commonProps, rangeStart: "cover 25%", rangeEnd: "cover 50%",},
-      // )
-      // // .onfinish = ()=>{b0.style.opacity = '0';};
-      //
-      // document.getElementById("arrow-PHOTOGRAPH-PROJECT").animate(
-      //     [
-      //         {transform: "translate3d(0px, 0px, 0px) scale(1, 1)" },
-      //         {transform: "translate3d(0px, 500px, 0px) scale(1, 0.05)" },
-      //     ],
-      //     {...commonProps, rangeStart: "cover 25%", rangeEnd: "cover 50%",},
-      // );
-      /***/
+
+      /** SPECIFICATION NOTEBOOK, BUDGET UPDATE */
+      document.querySelector("#b_-10").animate([
+              {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
+              {transform: "translate3d(0px, 112px, 0px)", opacity: 1, display: "initial"},
+              {transform: "translate3d(265px, 112px, 0px)", opacity: 1, display: "initial"},
+              {transform: "translate3d(265px, 112px, 0px)", opacity: 0, display: "none"},
+          ], {...commonProps, rangeEnd: "cover 50%"},
+      )
+      document.querySelector("#b_-11").animate([
+          {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
+          {transform: "translate3d(0px, 128px, 0px)", opacity: 1, display: "initial"},
+          {transform: "translate3d(228px, 128px, 0px)", opacity: 1, display: "initial"},
+          {transform: "translate3d(228px, 128px, 0px)", opacity: 0, display: "none"},
+          ], {...commonProps, rangeEnd: "cover 50%"},
+      )
+      document.querySelectorAll("#peak_to_SPECIFICATION_NOTEBOOK, #peak_to_BUDGET_UPDATE")
+          .forEach((el) => el.animate(
+          [
+              {opacity: 1, display: "initial"},
+              {opacity: 0, display: "none"},
+          ],
+          {...commonProps},
+      ))
+
+
+      document.querySelectorAll("#arrow_to_SPECIFICATION_NOTEBOOK path, #arrow_to_BUDGET_UPDATE path")
+          .forEach((el) => el.animate(
+              [
+                  {opacity: 1, display: "initial"},
+                  {opacity: 0, display: "none"},
+              ],
+              {...commonProps},
+          ))
+      document.querySelectorAll("#arrow_to_SPECIFICATION_NOTEBOOK, #arrow_to_BUDGET_UPDATE")
+          .forEach((el) => el.animate(
+              [
+                  {clipPath: 'inset(0 0 0 0)', display: "initial"},
+                  {clipPath: 'inset(50% 0 0 0)', display: "initial"},
+                  {clipPath: 'inset(50% 0 0 15%)', display: "none"},
+              ],
+              {...commonProps},
+          ))
       /***/
   }
 }

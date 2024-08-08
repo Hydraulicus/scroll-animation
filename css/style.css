@@ -70,6 +70,7 @@ section {
     width: 100%;
     height: auto;
     transform-origin: top left;
+    transform-box: fill-box;
 
   }
 }
