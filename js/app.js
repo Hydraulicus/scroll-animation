@@ -290,6 +290,28 @@ class ScrollAnimation {
               {...commonProps, rangeEnd: "cover 25%"},
           )
       /***/
+
+      /** ITEMS SHIPPED, ORDERS PLACED*/
+      document.querySelector(" #b_-14").animate([
+              {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
+              {transform: "translate3d(0px, -198px, 0px)", opacity: 1, display: "initial"},
+              {transform: "translate3d(0px, -198px, 0px)", opacity: 0, display: "none"},
+              ], {...commonProps},
+          );
+      document.querySelector(" #arrow_to_FINAL_INVOICES").animate([
+              {clipPath: 'inset(0 0 0 0)', display: "initial"},
+              {clipPath: 'inset(0 0 100% 0)', display: "none"},
+              ], {...commonProps, rangeEnd: "cover 13%"},
+          );
+
+      document.querySelectorAll(" #b_-25, #arrow_to_ITEMS_SHIPPED, #arrow_to_ORDER_PLACED path")
+          .forEach((el) => el.animate([
+              {transform: "translate3d(0px, 0px, 0px)"},
+              {transform: "translate3d(0px, -198px, 0px)"},
+              {transform: "translate3d(0px, -198px, 0px)"},
+              ], {...commonProps},
+          ))
+      /***/
   }
 }
 
