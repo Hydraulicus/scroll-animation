@@ -143,7 +143,7 @@ class ScrollAnimation {
               {transform: "translate3d(338px, -187px, 0px)", opacity: 1, display: "initial"},
               {transform: "translate3d(338px, -187px, 0px)", opacity: 0, display: "none"},
           ],
-          {...commonProps, rangeEnd: "cover 50%"},
+          {...commonProps, rangeEnd: "cover 45%"},
       )
       )
 
@@ -164,19 +164,19 @@ class ScrollAnimation {
       document.querySelector("#arrow_to_SOURCING_SELECTING path:first-child").animate(
           [
               {d: "path('M411.27,957.52 L411.27,803.42 L654.95,803.42')"},
-              {d: "path('M505,957.52 L505,803.42 L654.95,803.42')", display: "initial" },
-              {d: "path('M505,957.52 L505,803.42 L654.95,803.42')", display: "initial" },
-              {d: "path('M505,803.42 L505,803.42 L654.95,803.42')", display: "initial" },
-              {d: "path('M654,803.42 L654,803.42 L654.95,803.42')", display: "initial" },
-              {d: "path('M654,803.42 L654,803.42 L654.95,803.42')", display: "none" },
+              {d: "path('M510,957.52 L510,803.42 L654.95,803.42')", display: "initial" },
+              {d: "path('M510,804 L510,803.42 L654.95,803.42')", display: "initial" },
+              {d: "path('M660,803.42 L660,803.42 L660,803.42')", display: "initial" },
+              {d: "path('M680,803.42 L680,803.42 L680,803.42')", display: "initial" },
+              {d: "path('M680,803.42 L680,803.42 L680,803.42')", display: "none" },
           ],
-          {...commonProps, rangeEnd: "cover 45%"},
+          {...commonProps, rangeEnd: "cover 50%"},
       );
       document.querySelector(" #arrow_to_SOURCING_SELECTING path:last-child").animate(
           [
               {opacity: 1, display: "initial" },
               {opacity: 1, display: "none" },
-          ], {...commonProps, rangeEnd: "cover 30%"});
+          ], {...commonProps, rangeEnd: "cover 25%"});
 
       document.querySelector("#line_DEVELOP_to_SOURCING").animate(
           [
@@ -265,7 +265,7 @@ class ScrollAnimation {
               {...commonProps},
           ))
       /***/
-      /** SITE SURVEY, RESEARCH, CONCEPTUAL DESIGN PRESENTATION, PRELIMINARY DRAWINGS */
+      /** SITE SURVEY, RESEARCH, CONCEPTUAL DESIGN PRESENTATION, PRELIMINARY DRAWINGS, TRADE DAY */
       document.querySelector("#b_-30").animate([
               {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
               {transform: "translate3d(-131px, 0px, 0px)", opacity: 1, display: "initial"},
@@ -283,6 +283,19 @@ class ScrollAnimation {
               {transform: "translate3d(0px, 0px, 0px)"},
               {transform: "translate3d(0, -50px, 0px)"},
           ], {...commonProps,  rangeEnd: "cover 25%"},
+      ))
+      document.querySelectorAll("#b_-7, #line_to_TRADE")
+          .forEach((el) => el.animate([
+              {transform: "translate3d(0px, 0px, 0px)"},
+              {transform: "translate3d(0, -50px, 0px)"},
+              {transform: "translate3d(0, -50px, 0px)"},
+              {transform: "translate3d(0, -50px, 0px)"},
+              {transform: "translate3d(0, -50px, 0px)"},
+              {transform: "translate3d(0, -50px, 0px)"},
+              {transform: "translate3d(0, -50px, 0px)"},
+              {transform: "translate3d(0, -50px, 0px)"},
+              {transform: "translate3d(-300px, -50px, 0px)"},
+          ], {...commonProps,  rangeEnd: "cover 80%"},
       ))
       document.querySelectorAll(" #b_-6")
           .forEach((el) => el.animate([
@@ -354,14 +367,33 @@ class ScrollAnimation {
           ))
       /***/
 
-      /** SOURCING AND SELECTING */
+      /** SOURCING AND SELECTING, DEVELOP DRAWINGS */
         document.querySelectorAll(" #b_-26")
           .forEach((el) => el.animate([
               {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
               {transform: "translate3d(396px, 0px, 0px)", opacity: 1, display: "initial"},
+              {transform: "translate3d(396px, 0px, 0px)", opacity: 0, display: "initial"},
               {transform: "translate3d(396px, 0px, 0px)", opacity: 0, display: "none"},
-              ], {...commonProps, rangeStart: "cover 50%", rangeEnd: "cover 75%"},
+              ], {...commonProps, rangeStart: "cover 40%", rangeEnd: "cover 60%"},
           ))
+        document.querySelectorAll("#b_-29")
+          .forEach((el) => el.animate([
+              {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
+              {transform: "translate3d(0px, -320px, 0px)", opacity: 1, display: "initial"},
+              {transform: "translate3d(0px, -320px, 0px)", opacity: 0, display: "initial"},
+              {transform: "translate3d(0px, -320px, 0px)", opacity: 0, display: "none"},
+              ], {...commonProps, rangeStart: "cover 45%", rangeEnd: "cover 70%"},
+          ))
+      document.querySelector(" #arrow_to_SOURCING").animate([
+              {clipPath: 'inset(0 0 0 0)', display: "initial"},
+              {clipPath: 'inset(0 0 0 100%)', display: "none"},
+          ], {...commonProps, rangeStart: "cover 40%", rangeEnd: "cover 50%"},
+      );
+      document.querySelector(" #arrow_to_DEVELOP_DRAWING").animate([
+              {clipPath: 'inset(0 0 0 0)', display: "initial"},
+              {clipPath: 'inset(0 0 100% 0)', display: "none"},
+          ], {...commonProps, rangeStart: "cover 47%", rangeEnd: "cover 56%"},
+      );
       /***/
   }
 }
