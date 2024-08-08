@@ -80,11 +80,7 @@ class ScrollAnimation {
         ],
         {...commonProps},
     );
-    console.log(document.getElementById("arrow_to_DESIGN_SERVICE"))
-
-
     /***/
-
 
     /** POST-INSTALL SURVEY , PHOTOGRAPH PROJECT*/
     /** POST-INSTALL SURVEY */
@@ -125,6 +121,54 @@ class ScrollAnimation {
       );
       /***/
     /***/
+
+    /** CONCEPTUAL DESIGN PRESENTATION */
+    document.querySelector("#b_scanspace-3 rect:first-child").animate(
+        [
+          {fill: "#ffffff" },
+          {fill: "#ff8d0e"},
+        ],
+        {...commonProps},
+    )
+    /***/
+
+      /** DESIGN PRESENTATION, CLIENT INPUT*/
+      document.querySelectorAll("#b_-27, #b_-28, #arrow_to_CLIENT_INPUT, #arrow_to_DESIGN_PRESENTATION")
+          .forEach((el) => el.animate(
+          [
+              {transform: "translate3d(0px, 0px, 0px) scale(1)"},
+              {transform: "translate3d(190px, 0px, 0px) scale(1)"},
+          ],
+          {...commonProps},
+      )
+      )
+
+      document.getElementById("arrow_to_SOURCING_SELECTING").animate(
+          [
+              {d: "path('M411.27,957.52 L411.27,803.42 L654.95,803.42')"},
+              {d: "path('M601.27,957.52 L601.27,803.42 L654.95,803.42')" },
+          ],
+          {...commonProps},
+      );
+      /***/
+      // document.getElementById("b_-23").animate(
+      //     [
+      //         {transform: "translate3d(0px, 0px, 0px) scale(1)", display: "initial" },
+      //         {transform: "translate3d(0px, -470px, 0px) scale(1)", display: "none"},
+      //     ],
+      //     {...commonProps, rangeStart: "cover 25%", rangeEnd: "cover 50%",},
+      // )
+      // // .onfinish = ()=>{b0.style.opacity = '0';};
+      //
+      // document.getElementById("arrow-PHOTOGRAPH-PROJECT").animate(
+      //     [
+      //         {transform: "translate3d(0px, 0px, 0px) scale(1, 1)" },
+      //         {transform: "translate3d(0px, 500px, 0px) scale(1, 0.05)" },
+      //     ],
+      //     {...commonProps, rangeStart: "cover 25%", rangeEnd: "cover 50%",},
+      // );
+      /***/
+      /***/
   }
 }
 
