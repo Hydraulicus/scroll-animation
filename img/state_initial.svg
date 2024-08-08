@@ -641,7 +641,7 @@
         </g>
         <path id="line_RESERCH_SITE_SURVAEY" d="M628.59,324.26 L666.03,324.26 L666.03,698.16 L628.59,698.03" fill="none" stroke="#00ffff"
                   stroke-miterlimit="10" stroke-width="2"/>
-        <g  data-id="2PRELIMINARY DRAWINGS">
+        <g id="arrow_to_PRELIMINARY_DRAWINGS" data-id="2PRELIMINARY DRAWINGS">
             <polyline points="848.99 632.1 848.99 752.43 429.1 752.43" fill="none" stroke="#fff" stroke-miterlimit="10"
                       stroke-width="2"/>
             <path d="M440.04,744.75c.24,.37,.13,.87-.25,1.1l-10.32,6.58,10.32,6.58c.37,.24,.48,.73,.25,1.1-.24,.37-.74,.48-1.1,.25l-11.38-7.25c-.23-.15-.37-.4-.37-.68s.14-.53,.37-.68l11.38-7.25c.13-.08,.28-.12,.43-.12,.26,0,.52,.13,.68,.37Z"

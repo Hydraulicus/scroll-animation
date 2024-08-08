@@ -196,7 +196,7 @@ class ScrollAnimation {
               {...commonProps},
           ))
       /***/
-      /** SITE SURVEY, RESEARCH, CONCEPTUAL DESIGN PRESENTATION */
+      /** SITE SURVEY, RESEARCH, CONCEPTUAL DESIGN PRESENTATION, PRELIMINARY DRAWINGS */
       document.querySelector("#b_-30").animate([
               {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
               {transform: "translate3d(-131px, 0px, 0px)", opacity: 1, display: "initial"},
@@ -211,9 +211,23 @@ class ScrollAnimation {
       )
       document.querySelectorAll("#b_scanspace-3, #arrow_to_CONCEPTUAL_DESIGN_PRESENTATION")
           .forEach((el) => el.animate([
-              {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
-              {transform: "translate3d(0, -50px, 0px)", opacity: 1, display: "initial"},
-          ], {...commonProps, rangeEnd: "cover 25%"},
+              {transform: "translate3d(0px, 0px, 0px)"},
+              {transform: "translate3d(0, -50px, 0px)"},
+          ], {...commonProps,  rangeEnd: "cover 25%"},
+      ))
+      document.querySelectorAll(" #b_-6")
+          .forEach((el) => el.animate([
+              {transform: "translate3d(0px, 0px, 0px)"},
+              {transform: "translate3d(-140px, 0px, 0px)"},
+              {transform: "translate3d(0px, 0px, 0px)"},
+              {transform: "translate3d(0, -50px, 0px)"},
+          ], {...commonProps, rangeEnd: "cover 50%"},
+      ))
+      document.querySelectorAll("#arrow_to_PRELIMINARY_DRAWINGS")
+          .forEach((el) => el.animate([
+              {transform: "translate3d(0px, 0px, 0px)"},
+              {transform: "translate3d(0, -50px, 0px)"},
+          ], {...commonProps, rangeStart: "cover 25%", rangeEnd: "cover 50%"},
       ))
       document.querySelectorAll("#arrow_to_SITE_SURVAEY path, #arrow_to_REASERCH path")
           .forEach((el) => el.animate(
