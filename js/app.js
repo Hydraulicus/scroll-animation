@@ -282,7 +282,15 @@ class ScrollAnimation {
                 {transform: "translate3d(-131px, 220px, 0px)", opacity: 1, display: "none"},
             ], {...commonProps, rangeEnd: "cover 25%"},
         )
-        document.querySelectorAll("#b_scanspace-3, #arrow_to_CONCEPTUAL_DESIGN_PRESENTATION")
+        document.querySelectorAll("#b_scanspace-3, #arrow_to_CONCEPTUAL_DESIGN_PRESENTATION path:last-child")
+            .forEach((el) => el.animate([
+                    {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)',},
+                    {transform: "translate3d(0, -50px, 0px)", clipPath: 'inset(0 0 0 0)',},
+                    {transform: "translate3d(0px, -50px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
+                    {transform: "translate3d(50px, -50px, 0px)", clipPath: 'inset(8% 0 11% 0)', display: "none"},
+                ], {...commonProps, rangeEnd: "cover 40%"},
+            ))
+        document.querySelectorAll("#arrow_to_CONCEPTUAL_DESIGN_PRESENTATION path:first-child")
             .forEach((el) => el.animate([
                     {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)',},
                     {transform: "translate3d(0, -50px, 0px)", clipPath: 'inset(0 0 0 0)',},
