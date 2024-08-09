@@ -422,18 +422,18 @@ class ScrollAnimation {
             ))
 
         document.querySelector("#arrow_to_ORDER_PLACED path:first-child").animate([
-                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,469.23 L1251.01,469.23')", display: "initial"},
-                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,430 L1251.01,430')", display: "initial"},
-                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,300 L1251.01,300')", display: "initial"},
-                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1251.01,270')", display: "initial"},
-                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1251.01,270')", display: "initial"},
-                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1251.01,270')", display: "initial"},
-                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1251.01,270')", display: "initial"},
-                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1251.01,270')", display: "initial"},
-                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1251.01,270')", display: "initial"},
-                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1251.01,270')", display: "initial"},
-                {d: "path('M1726,291.76 L1726,291.76 L1726,270 L1251.01,270')", display: "initial"},
-                {d: "path('M1726,291.76 L1726,291.76 L1726,270 L1251.01,270')", display: "none"},
+                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,469.23 L1151.01,469.23')", display: "initial"},
+                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,430 L1151.01,430')", display: "initial"},
+                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,300 L1151.01,300')", display: "initial"},
+                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1151.01,270')", display: "initial"},
+                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1151.01,270')", display: "initial"},
+                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1151.01,270')", display: "initial"},
+                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1151.01,270')", display: "initial"},
+                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1151.01,270')", display: "initial"},
+                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1151.01,270')", display: "initial"},
+                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1151.01,270')", display: "initial"},
+                {d: "path('M1726,291.76 L1726,291.76 L1726,270 L1151.01,270')", opacity: '1',display: "initial"},
+                {d: "path('M1726,291.76 L1726,291.76 L1726,270 L1726,270')", opacity: '0', display: "none"},
             ],
             {...commonProps, easing: "linear", rangeStart: "cover 1%", rangeEnd: "cover 78%"},
         );
@@ -596,19 +596,11 @@ class ScrollAnimation {
             ));
         document.querySelectorAll("#arrow_to_PROPOSALS_FOR_MERCHANDISE line:first-child")
             .forEach((el) => el.animate([
-                    {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
-                    {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 51% 0 )', display: "initial"},
-                    {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 61% 0 )', display: "none"},
+                    {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', opacity: 1, display: "initial"},
+                    {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 21% 0 )', opacity: 1, display: "initial"},
+                    {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 61% 0 )', opacity: 0, display: "none"},
                 ], {...commonProps, rangeStart: "cover 64%", rangeEnd: "cover 80%"},
             ));
-        // document.querySelectorAll("#arrow_to_PROPOSALS_FOR_MERCHANDISE line:first-child")
-        //     .forEach((el) => el.animate([
-        //             {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
-        //             {transform: "translate3d(0px, -323px, 0px)", clipPath: 'inset(100% 0 0 0)', display: "initial"},
-        //             {transform: "translate3d(-440px, -323px, 0px)", clipPath: 'inset(100% 0 0 0)', display: "initial"},
-        //         ], {...commonProps, rangeStart: "cover 60%", rangeEnd: "cover 90%"},
-        //     ));
-
         document.querySelectorAll("#b_-15")
             .forEach((el) => el.animate([
                     {transform: "translate3d(0px, 0px, 0px)", display: "initial"},
