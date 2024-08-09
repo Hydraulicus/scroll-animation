@@ -204,8 +204,8 @@ class ScrollAnimation {
         document.querySelectorAll("#b_")
             .forEach((el) => el.animate([
                     {transform: "translate3d(0px, 0px, 0px)", display: "initial"},
-                    {transform: "translate3d(420px, 0px, 0px)", display: "initial"},
-                    {transform: "translate3d(420px, 330px, 0px)", display: "none"},
+                    {transform: "translate3d(480px, 0px, 0px)", display: "initial"},
+                    {transform: "translate3d(480px, 330px, 0px)", display: "none"},
                 ],
                 {...commonProps, rangeEnd: "cover 30%"},
             ));
@@ -216,13 +216,13 @@ class ScrollAnimation {
                 {transform: "translate3d(300px, 0px, 0px)", opacity: 1, display: "initial"},
                 {transform: "translate3d(300px, 0px, 0px)", opacity: 0, display: "initial"},
                 {transform: "translate3d(320px, 0px, 0px)", opacity: 0, display: "none"},],
-            {...commonProps, rangeEnd: "cover 25%"},
+            {...commonProps, rangeEnd: "cover 29%"},
         );
         document.querySelector("#arrow_to_BUDGET_ESTIMATE polyline").animate(
             [
-                {clipPath: 'inset(0 0 0 0)', display: "initial"},
-                {clipPath: 'inset(0 0 0 95% )', display: "initial"},
-                {clipPath: 'inset(100% 0  0 100%)', display: "initial"},
+                {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
+                {transform: "translate3d(40px, 0px, 0px)", clipPath: 'inset(0 0 0 95% )', display: "initial"},
+                {transform: "translate3d(40px, 0px, 0px)", clipPath: 'inset(100% 0  0 100%)', display: "initial"},
             ],
             {...commonProps, rangeEnd: "cover 30%"},
         );
@@ -288,7 +288,8 @@ class ScrollAnimation {
             .forEach((el) => el.animate([
                     {transform: "translate3d(0px, 0px, 0px)"},
                     {transform: "translate3d(0, -50px, 0px)"},
-                ], {...commonProps, rangeEnd: "cover 25%"},
+                    {transform: "translate3d(50px, -50px, 0px)"},
+                ], {...commonProps, rangeEnd: "cover 30%"},
             ))
         document.querySelectorAll("#b_-7")
             .forEach((el) => el.animate([
@@ -300,22 +301,24 @@ class ScrollAnimation {
                     {transform: "translate3d(0, -50px, 0px)"},
                     {transform: "translate3d(0, -50px, 0px)"},
                     {transform: "translate3d(0, -50px, 0px)"},
-                    {transform: "translate3d(-300px, -50px, 0px)"},
+                    {transform: "translate3d(-280px, -50px, 0px)"},
                 ], {...commonProps, rangeEnd: "cover 80%"},
             ))
         document.querySelectorAll(" #b_-6")
             .forEach((el) => el.animate([
                     {transform: "translate3d(0px, 0px, 0px)"},
-                    {transform: "translate3d(-140px, 0px, 0px)"},
-                    {transform: "translate3d(0px, 0px, 0px)"},
-                    {transform: "translate3d(0, -50px, 0px)"},
+                    {transform: "translate3d(560px, 0px, 0px)"},
+                    {transform: "translate3d(560px, -210px, 0px)"},
                 ], {...commonProps, rangeEnd: "cover 50%"},
             ))
         document.querySelectorAll("#arrow_to_PRELIMINARY_DRAWINGS")
             .forEach((el) => el.animate([
-                    {transform: "translate3d(0px, 0px, 0px)"},
-                    {transform: "translate3d(0, -50px, 0px)"},
-                ], {...commonProps, rangeStart: "cover 25%", rangeEnd: "cover 50%"},
+                    // {transform: "translate3d(0px, 0px, 0px)"},
+                    // {transform: "translate3d(0, -50px, 0px)"},
+                {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
+                {transform: "translate3d(50px, 0px, 0px)", clipPath: 'inset(0 0 0 80%)', display: "initial"},
+                {transform: "translate3d(50px, 0px, 0px)", clipPath: 'inset(0 0 100% 80%)', display: "none"},
+                ], {...commonProps, rangeStart: "cover 0", rangeEnd: "cover 50%"},
             ))
         document.querySelectorAll("#arrow_to_SITE_SURVAEY path, #arrow_to_REASERCH path")
             .forEach((el) => el.animate(
@@ -356,20 +359,27 @@ class ScrollAnimation {
                 {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
                 {transform: "translate3d(0px, -198px, 0px)", opacity: 1, display: "initial"},
                 {transform: "translate3d(0px, -198px, 0px)", opacity: 0, display: "none"},
-            ], {...commonProps},
+            ], {...commonProps, rangeEnd: "cover 33%"},
         );
         document.querySelector(" #arrow_to_FINAL_INVOICES").animate([
                 {clipPath: 'inset(0 0 0 0)', display: "initial"},
                 {clipPath: 'inset(0 0 100% 0)', display: "none"},
-            ], {...commonProps, rangeEnd: "cover 13%"},
+            ], {...commonProps, rangeEnd: "cover 18.5%"},
         );
 
         document.querySelectorAll(" #b_-25, #arrow_to_ITEMS_SHIPPED, #arrow_to_ORDER_PLACED path:last-child")
             .forEach((el) => el.animate([
-                    {transform: "translate3d(0px, 0px, 0px)"},
-                    {transform: "translate3d(0px, -198px, 0px)"},
-                    {transform: "translate3d(0px, -198px, 0px)"},
-                ], {...commonProps},
+                    {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
+                    {transform: "translate3d(0px, -198px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
+                    {transform: "translate3d(0px, -198px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
+                    {transform: "translate3d(0px, -198px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
+                    {transform: "translate3d(0px, -198px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
+                    {transform: "translate3d(0px, -198px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
+                    {transform: "translate3d(0px, -198px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
+                    {transform: "translate3d(0px, -198px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
+                    {transform: "translate3d(0px, -198px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
+                    {transform: "translate3d(0px, -198px, 0px)", clipPath: 'inset(2% 2% 2% 2%)', display: "none"},
+                ], {...commonProps, rangeEnd: "cover 70%"},
             ))
 
         document.querySelector("#arrow_to_ORDER_PLACED path:first-child").animate([
@@ -377,7 +387,7 @@ class ScrollAnimation {
                 {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1251.01,270')"},
                 {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1251.01,270')"},
             ],
-            {...commonProps, rangeEnd: "cover 25%"},
+            {...commonProps, rangeEnd: "cover 33.5%"},
         );
 
         /***/
@@ -414,12 +424,12 @@ class ScrollAnimation {
         // document.querySelectorAll("#b_-9, #b_-12, #arrow_to_FINAL_DESIGN, #arrow_to_CLIENT_APPROVAL, #arrow_to_PROPOSALS_FOR_MERCHANDISE")
         document.querySelectorAll("#b_-12")
             .forEach((el) => el.animate([
-                {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
-                {transform: "translate3d(-460px, 0px, 0px)", opacity: 1, display: "initial"},
-                {transform: "translate3d(-460px, -21px, 0px)", opacity: 1, display: "initial"},
-                {transform: "translate3d(-590px, -21px, 0px)", opacity: 1, display: "initial"},
-                {transform: "translate3d(-590px, -21px, 0px)", opacity: 1, display: "none"},
-                ], {...commonProps, rangeStart: "cover 25%", rangeEnd: "cover 75%"},
+                {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
+                {transform: "translate3d(-460px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
+                {transform: "translate3d(-460px, -21px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
+                {transform: "translate3d(-590px, -21px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
+                {transform: "translate3d(-590px, -21px, 0px)", clipPath: 'inset(10% 10% 10% 10%)', display: "none"},
+                ], {...commonProps, rangeStart: "cover 25%", rangeEnd: "cover 70%"},
             ));
         document.querySelectorAll("#b_-9, #arrow_to_CLIENT_APPROVAL path:last-child")
             .forEach((el) => el.animate([
@@ -506,6 +516,28 @@ class ScrollAnimation {
                 ], {...commonProps, rangeStart: "cover 1%", rangeEnd: "cover 5%"},
             ));
 
+
+        /** Adjusting to final state */
+        document.querySelectorAll("#b_scanspace")
+            .forEach((el) => el.animate([
+                    {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
+                    {transform: "translate3d(195px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
+                    {transform: "translate3d(195px, 0px, 0px)", clipPath: 'inset(10% 15% 10% 15%)', display: "initial"},
+                ], {...commonProps, rangeStart: "cover 60%", rangeEnd: "cover 80%"},
+            ));
+
+        document.querySelectorAll("#b_-15")
+            .forEach((el) => el.animate([
+                    {transform: "translate3d(0px, 0px, 0px)", display: "initial"},
+                    {transform: "translate3d(-195px, 0px, 0px)", display: "initial"},
+                    {transform: "translate3d(-195px, 134px, 0px)", display: "initial"},
+                    {transform: "translate3d(-195px, 134px, 0px)", display: "initial"},
+                    {transform: "translate3d(145px, 134px, 0px)", display: "initial"},
+                    {transform: "translate3d(145px, 154px, 0px)", display: "initial"},
+                    {transform: "translate3d(458px, 154px, 0px)", display: "initial"},
+                    {transform: "translate3d(458px, 404px, 0px)", display: "initial"},
+                ], {...commonProps, rangeStart: "cover 50%", rangeEnd: "cover 90%"},
+            ));
 
 
     }
