@@ -47,29 +47,29 @@ class ScrollAnimation {
 
         /** INITIAL CONSULTATION , DISCOVERY CALL */
         document.getElementById("b_idea").animate([
-            {transform: "translate3d(0px, 0px, 0px) scale(1)"},
-            {transform: "translate3d(30px, 380px, 0px) scale(0.65)"},
+            {transform: "translate3d(0px, 0px, 0px) scale(1)", display: "initial"},
+            {transform: "translate3d(30px, 380px, 0px) scale(0.65)", display: "none"},
 
         ], {...commonProps,})
 
         document.getElementById("b_-2").animate(
             [
-                {transform: "translate3d(0px, 0px, 0px) scale(1)"},
-                {transform: "translate3d(15px, 260px, 0px) scale(0.75)"},
+                {transform: "translate3d(0px, 0px, 0px) scale(1)", display: "initial"},
+                {transform: "translate3d(15px, 260px, 0px) scale(0.75)", display: "none"},
             ],
             {...commonProps,},
         );
         document.getElementById("arrow0").animate(
             [
-                {transform: "translate3d(0px, 0px, 0px) scale(1)"},
-                {transform: "translate3d(30px, 290px, 0px) scale(0.75)"},
+                {transform: "translate3d(0px, 0px, 0px) scale(1)", display: "initial"},
+                {transform: "translate3d(30px, 290px, 0px) scale(0.75)", display: "none"},
             ],
             {...commonProps,},
         );
         document.getElementById("arrow1").animate(
             [
-                {transform: "translate3d(0px, 0px, 0px) scale(1)"},
-                {transform: "translate3d(40px, 260px, 0px) scale(0.6)"},
+                {transform: "translate3d(0px, 0px, 0px) scale(1)", display: "initial"},
+                {transform: "translate3d(40px, 260px, 0px) scale(0.6)", display: "none"},
             ],
             {...commonProps,},
         );
@@ -164,7 +164,10 @@ class ScrollAnimation {
             {d: "path('M953.69,916.89 L953.69,1020')"},
             {d: "path('M1143.99,885 L1144.54,990')"},
             {d: "path('M1143.99,545 L1144.54,990')"},
-        ], {...commonProps, rangeEnd: "cover 25%"});
+            {d: "path('M1143.99,545 L1144.54,950')"},
+            {d: "path('M1143.99,545 L1144.54,880')"},
+            {d: "path('M1143.99,545 L1144.54,545')"},
+        ], {...commonProps, rangeEnd: "cover 45%"});
 
 
         document.querySelector("#arrow_to_SOURCING_SELECTING path:first-child").animate(
@@ -550,19 +553,26 @@ class ScrollAnimation {
                 ], {...commonProps, rangeStart: "cover 60%", rangeEnd: "cover 80%"},
             ));
 
-        document.querySelectorAll("#b_-8, #arrow_to_FINAL_DESIGN")
+        document.querySelectorAll("#b_-8")
             .forEach((el) => el.animate([
                     {transform: "translate3d(0px, 0px, 0px)", display: "initial"},
                     {transform: "translate3d(0px, -323px, 0px)", display: "initial"},
                     {transform: "translate3d(-440px, -323px, 0px)", display: "initial"},
                 ], {...commonProps, rangeStart: "cover 60%", rangeEnd: "cover 90%"},
             ));
+        document.querySelectorAll("#arrow_to_FINAL_DESIGN")
+            .forEach((el) => el.animate([
+                    {clipPath: "circle(600px at right top)", display: "initial"},
+                    {clipPath: "circle(100px at right top)", display: "initial"},
+                    {clipPath: "circle(5px at right top)", display: "initial"},
+                ], {...commonProps, rangeStart: "cover 55%", rangeEnd: "cover 70%"},
+            ));
         document.querySelectorAll("#arrow_to_PROPOSALS_FOR_MERCHANDISE line:first-child")
             .forEach((el) => el.animate([
                     {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
-                    {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 61% 0 )', display: "initial"},
+                    {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 51% 0 )', display: "initial"},
                     {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 61% 0 )', display: "none"},
-                ], {...commonProps, rangeStart: "cover 60%", rangeEnd: "cover 80%"},
+                ], {...commonProps, rangeStart: "cover 64%", rangeEnd: "cover 80%"},
             ));
         // document.querySelectorAll("#arrow_to_PROPOSALS_FOR_MERCHANDISE line:first-child")
         //     .forEach((el) => el.animate([
@@ -606,10 +616,16 @@ class ScrollAnimation {
                     {transform: "translate3d(0px, 0px, 0px)", display: "initial"},
                     {transform: "translate3d(-200px, 0px, 0px)", display: "initial"},
                 ], {...commonProps, rangeStart: "cover 75%", rangeEnd: "cover 77.5%"},);
+
         document.querySelector("#arrow_to_DREAM_HOME path:last-child").animate([
                     {opacity: 1, display: "initial"},
                     {opacity: 0, display: "none"},
                 ], {...commonProps, rangeStart: "cover 70%", rangeEnd: "cover 75%"},);
+
+        document.querySelector("#b_-4").animate([
+            {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)'},
+            {transform: "translate3d(231px, 0px, 0px)", clipPath: 'inset(24% 0% 24% 0%)'},
+                ], {...commonProps, rangeStart: "cover 80%", rangeEnd: "cover 85%"},);
 
 
     }
