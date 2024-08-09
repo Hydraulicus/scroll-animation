@@ -388,6 +388,11 @@ class ScrollAnimation {
                 {clipPath: 'inset(0 0 100% 0)', display: "none"},
             ], {...commonProps, rangeEnd: "cover 18.5%"},
         );
+        document.querySelector(" #arrow_to_ORDER_PLACED path:last-child").animate([
+                {opacity: 1, display: "initial"},
+                {opacity: 0, display: "none"},
+            ], {...commonProps, rangeEnd: "cover 5%"},
+        );
 
         document.querySelectorAll(" #b_-25")
             .forEach((el) => el.animate([
@@ -402,7 +407,7 @@ class ScrollAnimation {
                     {transform: "translate3d(0px, -198px, 0px)", opacity: 1, display: "none"},
                 ], {...commonProps, rangeEnd: "cover 70%"},
             ))
-        document.querySelectorAll("#arrow_to_ITEMS_SHIPPED, #arrow_to_ORDER_PLACED path:last-child")
+        document.querySelectorAll("#arrow_to_ITEMS_SHIPPED")
             .forEach((el) => el.animate([
                     {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
                     {transform: "translate3d(0px, -198px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
@@ -418,6 +423,9 @@ class ScrollAnimation {
 
         document.querySelector("#arrow_to_ORDER_PLACED path:first-child").animate([
                 {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,469.23 L1251.01,469.23')", display: "initial"},
+                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,430 L1251.01,430')", display: "initial"},
+                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,300 L1251.01,300')", display: "initial"},
+                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1251.01,270')", display: "initial"},
                 {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1251.01,270')", display: "initial"},
                 {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1251.01,270')", display: "initial"},
                 {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1251.01,270')", display: "initial"},
@@ -427,7 +435,7 @@ class ScrollAnimation {
                 {d: "path('M1726,291.76 L1726,291.76 L1726,270 L1251.01,270')", display: "initial"},
                 {d: "path('M1726,291.76 L1726,291.76 L1726,270 L1251.01,270')", display: "none"},
             ],
-            {...commonProps, rangeEnd: "cover 78%"},
+            {...commonProps, easing: "linear", rangeStart: "cover 1%", rangeEnd: "cover 78%"},
         );
 
         /***/
