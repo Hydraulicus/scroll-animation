@@ -693,6 +693,27 @@ class ScrollAnimation {
                 ], {...commonProps, easing: "ease-in-out", rangeStart: "cover 90%", rangeEnd: "cover 95%"},
             );
 
+        document.querySelector("#SCAN_SPACE").animate([
+            {transform: "translate3d(150px, 220px, 0px) scale(0.75)", opacity: 0, display: "none"},
+            {transform: "translate3d(0px, 0px, 0px) scale(1)", opacity: 1, display: "initial"},
+                ], {...commonProps, easing: "ease-out", rangeStart: "cover 90%", rangeEnd: "cover 100%"},
+            );
+        document.querySelector("#BUDGET_BAG").animate([
+            {transform: "translate3d(220px, 220px, 0px) scale(0.75)", opacity: 0, display: "none"},
+            {transform: "translate3d(0px, 0px, 0px) scale(1)", opacity: 1, display: "initial"},
+                ], {...commonProps, easing: "ease-out", rangeStart: "cover 90%", rangeEnd: "cover 100%"},
+            );
+        document.querySelector("#BESPOKE_DESIGN").animate([
+            {transform: "translate3d(320px, 220px, 0px) scale(0.75)", opacity: 0, display: "none"},
+            {transform: "translate3d(0px, 0px, 0px) scale(1)", opacity: 1, display: "initial"},
+                ], {...commonProps, easing: "ease-out", rangeStart: "cover 90%", rangeEnd: "cover 100%"},
+            );
+        document.querySelector("#SHOP_DESIGN").animate([
+            {transform: "translate3d(390px, 220px, 0px) scale(0.75)", opacity: 0, display: "none"},
+            {transform: "translate3d(0px, 0px, 0px) scale(1)", opacity: 1, display: "initial"},
+                ], {...commonProps, easing: "ease-out", rangeStart: "cover 90%", rangeEnd: "cover 100%"},
+            );
+
 
     }
 }
