@@ -114,8 +114,8 @@ class ScrollAnimation {
 
         document.getElementById("arrow-PHOTOGRAPH-PROJECT").animate(
             [
-                {transform: "translate3d(0px, 0px, 0px) scale(1, 1)"},
-                {transform: "translate3d(0px, 500px, 0px) scale(1, 0.05)"},
+                {transform: "translate3d(0px, 0px, 0px) scale(1, 1)", display: "initial"},
+                {transform: "translate3d(0px, 500px, 0px) scale(1, 0.05)", display: "none"},
             ],
             {...commonProps, rangeStart: "cover 25%", rangeEnd: "cover 50%",},
         );
@@ -367,7 +367,20 @@ class ScrollAnimation {
             ], {...commonProps, rangeEnd: "cover 18.5%"},
         );
 
-        document.querySelectorAll(" #b_-25, #arrow_to_ITEMS_SHIPPED, #arrow_to_ORDER_PLACED path:last-child")
+        document.querySelectorAll(" #b_-25")
+            .forEach((el) => el.animate([
+                    {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
+                    {transform: "translate3d(0px, -198px, 0px)", opacity: 1, display: "initial"},
+                    {transform: "translate3d(0px, -198px, 0px)", opacity: 1, display: "initial"},
+                    {transform: "translate3d(0px, -198px, 0px)", opacity: 1, display: "initial"},
+                    {transform: "translate3d(0px, -198px, 0px)", opacity: 1, display: "initial"},
+                    {transform: "translate3d(0px, -198px, 0px)", opacity: 1, display: "initial"},
+                    {transform: "translate3d(0px, -198px, 0px)", opacity: 1, display: "initial"},
+                    {transform: "translate3d(0px, -198px, 0px)", opacity: 1, display: "initial"},
+                    {transform: "translate3d(0px, -198px, 0px)", opacity: 1, display: "none"},
+                ], {...commonProps, rangeEnd: "cover 70%"},
+            ))
+        document.querySelectorAll("#arrow_to_ITEMS_SHIPPED, #arrow_to_ORDER_PLACED path:last-child")
             .forEach((el) => el.animate([
                     {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
                     {transform: "translate3d(0px, -198px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
@@ -377,8 +390,7 @@ class ScrollAnimation {
                     {transform: "translate3d(0px, -198px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
                     {transform: "translate3d(0px, -198px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
                     {transform: "translate3d(0px, -198px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
-                    {transform: "translate3d(0px, -198px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
-                    {transform: "translate3d(0px, -198px, 0px)", clipPath: 'inset(2% 2% 2% 2%)', display: "none"},
+                    {transform: "translate3d(0px, -198px, 0px)", clipPath: 'inset(50% 50% 50% 50%)', display: "none"},
                 ], {...commonProps, rangeEnd: "cover 70%"},
             ))
 
@@ -515,6 +527,13 @@ class ScrollAnimation {
                     {opacity: 0, display: "none"},
                 ], {...commonProps, rangeStart: "cover 1%", rangeEnd: "cover 5%"},
             ));
+        document.querySelectorAll("#arrow-DECIDES_FINAL_INVOICES")
+            .forEach(el => el.animate([
+                    {clipPath: 'inset(0 0 0 0)', display: "initial"},
+                    {clipPath: 'inset(0 0 0 100%)', display: "initial"},
+                    // {clipPath: 'inset(0 0 0 0)', display: "none"},
+                ], {...commonProps, rangeStart: "cover 6%", rangeEnd: "cover 13%"},
+            ));
 
 
         /** Adjusting to final state */
@@ -529,15 +548,38 @@ class ScrollAnimation {
         document.querySelectorAll("#b_-15")
             .forEach((el) => el.animate([
                     {transform: "translate3d(0px, 0px, 0px)", display: "initial"},
-                    {transform: "translate3d(-195px, 0px, 0px)", display: "initial"},
-                    {transform: "translate3d(-195px, 134px, 0px)", display: "initial"},
-                    {transform: "translate3d(-195px, 134px, 0px)", display: "initial"},
-                    {transform: "translate3d(145px, 134px, 0px)", display: "initial"},
-                    {transform: "translate3d(145px, 154px, 0px)", display: "initial"},
+                    {transform: "translate3d(-30px, 0px, 0px)", display: "initial"},
+                    {transform: "translate3d(-30px, 134px, 0px)", display: "initial"},
+                    {transform: "translate3d(-30px, 134px, 0px)", display: "initial"},
                     {transform: "translate3d(458px, 154px, 0px)", display: "initial"},
-                    {transform: "translate3d(458px, 404px, 0px)", display: "initial"},
+                    {transform: "translate3d(458px, 404px, 0px)", display: "none"},
                 ], {...commonProps, rangeStart: "cover 50%", rangeEnd: "cover 90%"},
             ));
+
+        document.querySelectorAll("#arrow_to_DREAM_HOME path:first-child")
+            .forEach((el) => el.animate([
+                {d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55 L1100,136.55 L1100,150')", display: "initial"},
+
+                {d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55  L1100,136.55 L1100,300')", display: "initial"},
+                {d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55  L1100,136.55 L1100,300')", display: "initial"},
+
+                {d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55  L1150,136.55 L1150,300')", display: "initial"},
+                {d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55  L1350,136.55 L1350,300')", display: "initial"},
+                {d: "path('M1860, 530 L1860, 505.58 L1860,136.55 L1580,136.55 L1580,300')", display: "initial"},
+                {d: "path('M1860, 530 L1860, 505.58 L1860,136.55 L1600,136.55 L1600,400')", display: "initial"},
+                {d: "path('M1860, 530 L1860, 505.58 L1860,530 L1600,530 L1600,450')", display: "initial"},
+                {d: "path('M1860, 530 L1860, 505.58 L1860,540 L1600,540 L1600,550')", display: "none"},
+                ], {...commonProps, rangeStart: "cover 60%", rangeEnd: "cover 90%"},
+            ));
+
+        document.querySelector("#b_-21").animate([
+                    {transform: "translate3d(0px, 0px, 0px)", display: "initial"},
+                    {transform: "translate3d(-200px, 0px, 0px)", display: "initial"},
+                ], {...commonProps, rangeStart: "cover 75%", rangeEnd: "cover 77.5%"},);
+        document.querySelector("#arrow_to_DREAM_HOME path:last-child").animate([
+                    {opacity: 1, display: "initial"},
+                    {opacity: 0, display: "none"},
+                ], {...commonProps, rangeStart: "cover 70%", rangeEnd: "cover 75%"},);
 
 
     }
