@@ -24,12 +24,6 @@ section {
   width: 100%;
   height: auto;
   margin-bottom: 2rem;
-  border: 1px solid darkmagenta;
-
-    &.project {
-        border: 1px solid darkcyan;
-
-    }
 }
 .scrollable {
   position: relative;

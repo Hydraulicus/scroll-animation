@@ -587,9 +587,18 @@ class ScrollAnimation {
             .forEach((el) => el.animate([
                     {transform: "translate3d(0px, 0px, 0px)", display: "initial"},
                     {transform: "translate3d(0px, -323px, 0px)", display: "initial"},
-                    {transform: "translate3d(-440px, -323px, 0px)", display: "initial"},
+                    {transform: "translate3d(-440px, -323px, 0px)", display: "none"},
                 ], {...commonProps, rangeStart: "cover 60%", rangeEnd: "cover 90%"},
             ));
+
+        document.querySelectorAll("#b_generate")
+            .forEach((el) => el.animate([
+                    {opacity: 0},
+                    {opacity: 1},
+                ], {...commonProps, rangeStart: "cover 85%", rangeEnd: "cover 90%"},
+            ));
+
+
         document.querySelectorAll("#arrow_to_FINAL_DESIGN")
             .forEach((el) => el.animate([
                     {clipPath: "circle(600px at right top)", display: "initial"},
@@ -613,6 +622,12 @@ class ScrollAnimation {
                     {transform: "translate3d(458px, 134px, 0px)", display: "initial"},
                     {transform: "translate3d(458px, 404px, 0px)", display: "none"},
                 ], {...commonProps, rangeStart: "cover 50%", rangeEnd: "cover 87%"},
+            ));
+        document.querySelectorAll("#b_shopdesign")
+            .forEach((el) => el.animate([
+                    {opacity: 0},
+                    {opacity: 1},
+                ], {...commonProps, rangeStart: "cover 85%", rangeEnd: "cover 90%"},
             ));
 
         document.querySelectorAll("#arrow_to_DREAM_HOME path:first-child")
@@ -657,7 +672,26 @@ class ScrollAnimation {
         document.querySelector("#final_arrow_2").animate([
             {transform: "translate3d(-235px, 0px, 0px)", display: "none"},
             {transform: "translate3d(0px, 0px, 0px)", display: "initial"},
-                ], {...commonProps, easing: "ease-in-out", rangeStart: "cover 60%", rangeEnd: "cover 75%"},);
+                ], {...commonProps, easing: "ease-in-out", rangeStart: "cover 60%", rangeEnd: "cover 75%"},
+            );
+
+        document.querySelector("#final_arrow_3").animate([
+            {transform: "translate3d(-235px, 0px, 0px)", display: "none"},
+            {transform: "translate3d(0px, 0px, 0px)", display: "initial"},
+                ], {...commonProps, easing: "ease-in-out", rangeStart: "cover 60%", rangeEnd: "cover 75%"},
+            );
+
+        document.querySelector("#final_arrow_4").animate([
+            {transform: "translate3d(0, 0px, 0px)", display: "none"},
+            {transform: "translate3d(0px, 0px, 0px)", display: "initial"},
+                ], {...commonProps, easing: "ease-in-out", rangeStart: "cover 80%", rangeEnd: "cover 85%"},
+            );
+
+        document.querySelector("#final_arrow_5").animate([
+            {transform: "translate3d(0, 0px, 0px)", display: "none"},
+            {transform: "translate3d(0px, 0px, 0px)", display: "initial"},
+                ], {...commonProps, easing: "ease-in-out", rangeStart: "cover 90%", rangeEnd: "cover 95%"},
+            );
 
 
     }
