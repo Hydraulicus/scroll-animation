@@ -49,36 +49,42 @@ class ScrollAnimation {
         document.getElementById("b_idea").animate([
             {transform: "translate3d(0px, 0px, 0px) scale(1)", display: "initial"},
             {transform: "translate3d(30px, 380px, 0px) scale(0.65)", display: "none"},
-
-        ], {...commonProps,})
+        ], {...commonProps, rangeStart: "cover 35%", rangeEnd: "cover 60%"})
 
         document.getElementById("b_-2").animate(
             [
                 {transform: "translate3d(0px, 0px, 0px) scale(1)", display: "initial"},
                 {transform: "translate3d(15px, 260px, 0px) scale(0.75)", display: "none"},
             ],
-            {...commonProps,},
+            {...commonProps, rangeStart: "cover 35%", rangeEnd: "cover 60%"},
         );
         document.getElementById("arrow0").animate(
             [
                 {transform: "translate3d(0px, 0px, 0px) scale(1)", display: "initial"},
                 {transform: "translate3d(30px, 290px, 0px) scale(0.75)", display: "none"},
             ],
-            {...commonProps,},
+            {...commonProps, rangeStart: "cover 35%", rangeEnd: "cover 60%"},
         );
         document.getElementById("arrow1").animate(
             [
                 {transform: "translate3d(0px, 0px, 0px) scale(1)", display: "initial"},
                 {transform: "translate3d(40px, 260px, 0px) scale(0.6)", display: "none"},
             ],
-            {...commonProps,},
+            {...commonProps, rangeStart: "cover 35%", rangeEnd: "cover 60%"},
         );
-        document.getElementById("arrow_to_DESIGN_SERVICE").animate(
+        document.querySelector("#arrow_to_DESIGN_SERVICE path:first-child").animate(
             [
-                {d: "path('M201.33,248.76 L252.61,248.76 L252.61,540 L272.71,540')"},
-                {d: "path('M201.33,540 L252.61,540 L252.61,540 L272.71,540')"},
+                {d: "path('M201.33,248.76 L252.61,248.76 L252.61,540 L272.71,540')", display: "initial"},
+                {d: "path('M201.33,540 L252.61,540 L252.61,540 L272.71,540')", display: "none"},
             ],
-            {...commonProps},
+            {...commonProps, rangeStart: "cover 35%", rangeEnd: "cover 60%"},
+        );
+        document.querySelector("#arrow_to_DESIGN_SERVICE path:last-child").animate(
+            [
+                {display: "initial"},
+                {display: "none"},
+            ],
+            {...commonProps, rangeStart: "cover 35%", rangeEnd: "cover 60%"},
         );
         /***/
 
@@ -121,17 +127,6 @@ class ScrollAnimation {
         );
         /***/
         /***/
-
-        /** DESIGN SERVICE, CONCEPTUAL DESIGN PRESENTATION, FINAL INVOiCES, FINAL DESIGN */
-        document.querySelectorAll("#b_scanspace rect:first-child, #b_scanspace-3 rect:first-child, #b_-8 rect:first-child, #b_-15 rect:first-child")
-            .forEach((el) => el.animate(
-                    [
-                        {fill: "#ffffff"},
-                        {fill: "#11800e"},
-                    ],
-                    {...commonProps, rangeStart: "cover 25%", rangeEnd: "cover 75%"},
-                )
-            )
 
         /** DESIGN PRESENTATION, CLIENT INPUT*/
         document.querySelectorAll("#b_-28, #arrow_to_CLIENT_INPUT")
@@ -291,8 +286,8 @@ class ScrollAnimation {
             .forEach((el) => el.animate([
                     {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)',},
                     {transform: "translate3d(0, -50px, 0px)", clipPath: 'inset(0 0 0 0)',},
-                    {transform: "translate3d(50px, -50px, 0px)", clipPath: 'inset(0 0 0 0)',},
-                    {transform: "translate3d(50px, -50px, 0px)", clipPath: 'inset(8% 0 11% 0)',},
+                    {transform: "translate3d(0px, -50px, 0px)", clipPath: 'inset(0 0 0 0)',},
+                    {transform: "translate3d(0px, -50px, 0px)", clipPath: 'inset(8% 0 11% 0)',},
                 ], {...commonProps, rangeEnd: "cover 40%"},
             ))
         document.querySelectorAll("#b_sharevision")
@@ -368,9 +363,9 @@ class ScrollAnimation {
                 {...commonProps, rangeEnd: "cover 22%"},
             ))
         document.querySelector("#line_RESERCH_SITE_SURVAEY").animate([
-                {d: "path('M628.59,324.26 L666.03,324.26 L666.03,698.16 L628.59,698.03')"},
-                {d: "path('M490,324.26 L666.03,324.26 L666.03,698.16 L490,698.03')"},
-                {d: "path('M498.59,542 L666.03,542 L666.03,542 L490,542')"},
+                {d: "path('M628.59,324.26 L666.03,324.26 L666.03,698.16 L628.59,698.03')", display: "initial"},
+                {d: "path('M490,324.26 L666.03,324.26 L666.03,698.16 L490,698.03')", display: "initial"},
+                {d: "path('M498.59,540 L666.03,540 L666.03,540 L490,540')", display: "initial"},
             ],
             {...commonProps, rangeEnd: "cover 25%"},
         )
@@ -644,7 +639,17 @@ class ScrollAnimation {
         document.querySelector("#b_-4").animate([
             {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)'},
             {transform: "translate3d(231px, 0px, 0px)", clipPath: 'inset(24% 0% 24% 0%)'},
-                ], {...commonProps, rangeStart: "cover 65%", rangeEnd: "cover 75%"},);
+                ], {...commonProps,  easing: "ease-in-out", rangeStart: "cover 60%", rangeEnd: "cover 75%"},);
+
+        document.querySelector("#final_arrow_1").animate([
+            {transform: "translate3d(-235px, 0px, 0px)", display: "none"},
+            {transform: "translate3d(0px, 0px, 0px)", display: "initial"},
+                ], {...commonProps, easing: "ease-in-out", rangeStart: "cover 60%", rangeEnd: "cover 75%"},);
+
+        document.querySelector("#final_arrow_2").animate([
+            {transform: "translate3d(-235px, 0px, 0px)", display: "none"},
+            {transform: "translate3d(0px, 0px, 0px)", display: "initial"},
+                ], {...commonProps, easing: "ease-in-out", rangeStart: "cover 60%", rangeEnd: "cover 75%"},);
 
 
     }
