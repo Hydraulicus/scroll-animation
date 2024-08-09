@@ -395,11 +395,17 @@ class ScrollAnimation {
             ))
 
         document.querySelector("#arrow_to_ORDER_PLACED path:first-child").animate([
-                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,469.23 L1251.01,469.23')"},
-                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1251.01,270')"},
-                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1251.01,270')"},
+                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,469.23 L1251.01,469.23')", display: "initial"},
+                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1251.01,270')", display: "initial"},
+                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1251.01,270')", display: "initial"},
+                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1251.01,270')", display: "initial"},
+                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1251.01,270')", display: "initial"},
+                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1251.01,270')", display: "initial"},
+                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1251.01,270')", display: "initial"},
+                {d: "path('M1726,291.76 L1726,291.76 L1726,270 L1251.01,270')", display: "initial"},
+                {d: "path('M1726,291.76 L1726,291.76 L1726,270 L1251.01,270')", display: "none"},
             ],
-            {...commonProps, rangeEnd: "cover 33.5%"},
+            {...commonProps, rangeEnd: "cover 78%"},
         );
 
         /***/
@@ -433,7 +439,6 @@ class ScrollAnimation {
         );
         /***/
         /** FINAL DESIGN */
-        // document.querySelectorAll("#b_-9, #b_-12, #arrow_to_FINAL_DESIGN, #arrow_to_CLIENT_APPROVAL, #arrow_to_PROPOSALS_FOR_MERCHANDISE")
         document.querySelectorAll("#b_-12")
             .forEach((el) => el.animate([
                 {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
@@ -545,15 +550,37 @@ class ScrollAnimation {
                 ], {...commonProps, rangeStart: "cover 60%", rangeEnd: "cover 80%"},
             ));
 
+        document.querySelectorAll("#b_-8, #arrow_to_FINAL_DESIGN")
+            .forEach((el) => el.animate([
+                    {transform: "translate3d(0px, 0px, 0px)", display: "initial"},
+                    {transform: "translate3d(0px, -323px, 0px)", display: "initial"},
+                    {transform: "translate3d(-440px, -323px, 0px)", display: "initial"},
+                ], {...commonProps, rangeStart: "cover 60%", rangeEnd: "cover 90%"},
+            ));
+        document.querySelectorAll("#arrow_to_PROPOSALS_FOR_MERCHANDISE line:first-child")
+            .forEach((el) => el.animate([
+                    {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
+                    {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 61% 0 )', display: "initial"},
+                    {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 61% 0 )', display: "none"},
+                ], {...commonProps, rangeStart: "cover 60%", rangeEnd: "cover 80%"},
+            ));
+        // document.querySelectorAll("#arrow_to_PROPOSALS_FOR_MERCHANDISE line:first-child")
+        //     .forEach((el) => el.animate([
+        //             {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
+        //             {transform: "translate3d(0px, -323px, 0px)", clipPath: 'inset(100% 0 0 0)', display: "initial"},
+        //             {transform: "translate3d(-440px, -323px, 0px)", clipPath: 'inset(100% 0 0 0)', display: "initial"},
+        //         ], {...commonProps, rangeStart: "cover 60%", rangeEnd: "cover 90%"},
+        //     ));
+
         document.querySelectorAll("#b_-15")
             .forEach((el) => el.animate([
                     {transform: "translate3d(0px, 0px, 0px)", display: "initial"},
                     {transform: "translate3d(-30px, 0px, 0px)", display: "initial"},
                     {transform: "translate3d(-30px, 134px, 0px)", display: "initial"},
-                    {transform: "translate3d(-30px, 134px, 0px)", display: "initial"},
-                    {transform: "translate3d(458px, 154px, 0px)", display: "initial"},
+                    {transform: "translate3d(-20px, 134px, 0px)", display: "initial"},
+                    {transform: "translate3d(458px, 134px, 0px)", display: "initial"},
                     {transform: "translate3d(458px, 404px, 0px)", display: "none"},
-                ], {...commonProps, rangeStart: "cover 50%", rangeEnd: "cover 90%"},
+                ], {...commonProps, rangeStart: "cover 50%", rangeEnd: "cover 87%"},
             ));
 
         document.querySelectorAll("#arrow_to_DREAM_HOME path:first-child")
@@ -561,13 +588,16 @@ class ScrollAnimation {
                 {d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55 L1100,136.55 L1100,150')", display: "initial"},
 
                 {d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55  L1100,136.55 L1100,300')", display: "initial"},
-                {d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55  L1100,136.55 L1100,300')", display: "initial"},
+                {d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55  L1110,136.55 L1110,300')", display: "initial"},
 
-                {d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55  L1150,136.55 L1150,300')", display: "initial"},
-                {d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55  L1350,136.55 L1350,300')", display: "initial"},
-                {d: "path('M1860, 530 L1860, 505.58 L1860,136.55 L1580,136.55 L1580,300')", display: "initial"},
-                {d: "path('M1860, 530 L1860, 505.58 L1860,136.55 L1600,136.55 L1600,400')", display: "initial"},
-                {d: "path('M1860, 530 L1860, 505.58 L1860,530 L1600,530 L1600,450')", display: "initial"},
+                {d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55  L1110,136.55 L1110,300')", display: "initial"},
+                {d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55  L1240,136.55 L1240,300')", display: "initial"},
+                {d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55  L1510,136.55 L1510,300')", display: "initial"},
+                {d: "path('M1860, 530 L1860, 505.58 L1860,136.55 L1580,136.55 L1580,350')", display: "initial"},
+                {d: "path('M1860, 530 L1860, 505.58 L1860,136.55 L1600,136.55 L1600,550')", display: "initial"},
+                {d: "path('M1860, 530 L1860, 505.58 L1860,200 L1600,200 L1600,550')", display: "initial"},
+                {d: "path('M1860, 530 L1860, 505.58 L1860,250 L1600,250 L1600,550')", display: "initial"},
+                {d: "path('M1860, 530 L1860, 505.58 L1860,530 L1600,530 L1600,550')", display: "initial"},
                 {d: "path('M1860, 530 L1860, 505.58 L1860,540 L1600,540 L1600,550')", display: "none"},
                 ], {...commonProps, rangeStart: "cover 60%", rangeEnd: "cover 90%"},
             ));
