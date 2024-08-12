@@ -1,10 +1,30 @@
 const INIT_SVG = 'img/state_initial.svg';
 
-const scrollTimeline = new ScrollTimeline({
+const elem = document.querySelector("#project");
+const rect = elem.getBoundingClientRect();
+for (const key in rect) {
+    if (typeof rect[key] !== "function") {
+
+        console.log(`bbox [${key}]`, rect[key]);
+    }
+}
+console.log(`elem`, elem);
+
+
+const scrollTimeline = new ViewTimeline({
     source: document.documentElement,
-    scrollSource: document.getElementById("SVG_wrapper"), // For legacy implementations
+    'subject': document.getElementById("project"), // For legacy implementations
+    'axis': 'block',
+    // 'inset': 'auto',
+    // scrollSource: document.getElementById("scrollable"), // For legacy implementations
     orientation: 'block',
+    inset: [CSS.px(rect.top), CSS.px(rect.height)]
 });
+
+const output = document.querySelector(".output");
+output.textContent += `Subject element: ${scrollTimeline.subject.nodeName}, `;
+output.textContent += `start offset: ${scrollTimeline.startOffset}, `;
+output.textContent += `end offset: ${scrollTimeline.endOffset}.`;
 
 class ScrollAnimation {
     constructor() {
@@ -340,7 +360,7 @@ class ScrollAnimation {
                 {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
                 {transform: "translate3d(50px, 0px, 0px)", clipPath: 'inset(0 0 0 80%)', display: "initial"},
                 {transform: "translate3d(50px, 0px, 0px)", clipPath: 'inset(0 0 100% 80%)', display: "none"},
-                ], {...commonProps, rangeStart: "cover 0", rangeEnd: "cover 50%"},
+                ], {...commonProps, rangeStart: "cover 0%", rangeEnd: "cover 50%"},
             ))
         document.querySelectorAll("#arrow_to_SITE_SURVAEY path, #arrow_to_REASERCH path")
             .forEach((el) => el.animate(
@@ -691,35 +711,35 @@ class ScrollAnimation {
             );
 
         document.querySelector("#SCAN_SPACE").animate([
-            {transform: "translate3d(150px, 220px, 0px) scale(0.75)", opacity: 0, display: "none"},
-            {transform: "translate3d(0px, 0px, 0px) scale(1)", opacity: 1, display: "initial"},
-                ], {...commonProps, easing: "ease-out", rangeStart: "cover 90%", rangeEnd: "cover 100%"},
+            {transform: "translate3d(150px, 220px, 0px) scale(0.75)", opacity: 0, visibility: "hidden"},
+            {transform: "translate3d(0px, 0px, 0px) scale(1)", opacity: 1, visibility: "visible"},
+                ], {...commonProps, easing: "ease-out", fill: "forwards", rangeStart: "cover 90%", rangeEnd: "cover 100%"},
             );
         document.querySelector("#BUDGET_BAG").animate([
-            {transform: "translate3d(220px, 220px, 0px) scale(0.75)", opacity: 0, display: "none"},
-            {transform: "translate3d(0px, 0px, 0px) scale(1)", opacity: 1, display: "initial"},
-                ], {...commonProps, easing: "ease-out", rangeStart: "cover 90%", rangeEnd: "cover 100%"},
+            {transform: "translate3d(220px, 220px, 0px) scale(0.75)", opacity: 0, visibility: "hidden"},
+            {transform: "translate3d(0px, 0px, 0px) scale(1)", opacity: 1, visibility: "visible"},
+                ], {...commonProps, easing: "ease-out", fill: "forwards", rangeStart: "cover 90%", rangeEnd: "cover 100%"},
             );
         document.querySelector("#BESPOKE_DESIGN").animate([
-            {transform: "translate3d(320px, 220px, 0px) scale(0.75)", opacity: 0, display: "none"},
-            {transform: "translate3d(0px, 0px, 0px) scale(1)", opacity: 1, display: "initial"},
-                ], {...commonProps, easing: "ease-out", rangeStart: "cover 90%", rangeEnd: "cover 100%"},
+            {transform: "translate3d(320px, 220px, 0px) scale(0.75)", opacity: 0, visibility: "hidden"},
+            {transform: "translate3d(0px, 0px, 0px) scale(1)", opacity: 1, visibility: "visible"},
+                ], {...commonProps, easing: "ease-out", fill: "forwards", rangeStart: "cover 90%", rangeEnd: "cover 100%"},
             );
         document.querySelector("#SHOP_DESIGN").animate([
-            {transform: "translate3d(390px, 220px, 0px) scale(0.75)", opacity: 0, display: "none"},
-            {transform: "translate3d(0px, 0px, 0px) scale(1)", opacity: 1, display: "initial"},
-                ], {...commonProps, easing: "ease-out", rangeStart: "cover 90%", rangeEnd: "cover 100%"},
+            {transform: "translate3d(390px, 220px, 0px) scale(0.75)", opacity: 0, visibility: "hidden"},
+            {transform: "translate3d(0px, 0px, 0px) scale(1)", opacity: 1, visibility: "visible"},
+                ], {...commonProps, easing: "ease-out", fill: "forwards", rangeStart: "cover 90%", rangeEnd: "cover 100%"},
             );
 
 
     }
 }
 
-if (isSafari()) {
-    injectSVG({src: INIT_SVG, el: document.getElementById("SVG_wrapper")});
-} else {
+// if (isSafari()) {
+//     injectSVG({src: INIT_SVG, el: document.getElementById("SVG_wrapper")});
+// } else {
     const scrollAnimation = new ScrollAnimation();
     scrollAnimation.init({})
     .then(scrollAnimation.progressBar)
     .then(scrollAnimation.main)
-}
+// }

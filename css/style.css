@@ -79,3 +79,9 @@ section {
   }
 }
 
+.output {
+  color: salmon;
+  position: fixed;
+  bottom: 15px;
+  right: 5px;
+}
