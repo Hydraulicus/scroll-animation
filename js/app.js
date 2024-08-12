@@ -1,3 +1,5 @@
+const INIT_SVG = 'img/state_initial.svg';
+
 const scrollTimeline = new ScrollTimeline({
     source: document.documentElement,
     scrollSource: document.getElementById("SVG_wrapper"), // For legacy implementations
@@ -6,17 +8,12 @@ const scrollTimeline = new ScrollTimeline({
 
 class ScrollAnimation {
     constructor() {
-
-        // this.iOSSafari =  isSafari();
-
-
         this.init = this.init.bind(this);
         this.main = this.main.bind(this);
         this.progressBar = this.progressBar.bind(this);
-
     }
 
-    async init({src = "img/state_initial.svg"}) {
+    async init({src = INIT_SVG}) {
         const SVG_wrapper = document.getElementById("SVG_wrapper");
         await injectSVG({src, el: SVG_wrapper,});
         return new Promise((resolve) => resolve());
@@ -718,12 +715,11 @@ class ScrollAnimation {
     }
 }
 
-const scrollAnimation = new ScrollAnimation();
-
-// window.addEventListener('resize', function (event) {
-//   morphAnimation.main();
-// });
-
-scrollAnimation.init({})
+if (isSafari()) {
+    injectSVG({src: INIT_SVG, el: document.getElementById("SVG_wrapper")});
+} else {
+    const scrollAnimation = new ScrollAnimation();
+    scrollAnimation.init({})
     .then(scrollAnimation.progressBar)
     .then(scrollAnimation.main)
+}
