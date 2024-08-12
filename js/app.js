@@ -1,6 +1,6 @@
 const INIT_SVG = 'img/state_initial.svg';
 
-const elem = document.querySelector("#project");
+const elem = document.getElementById("subject");
 const rect = elem.getBoundingClientRect();
 for (const key in rect) {
     if (typeof rect[key] !== "function") {
@@ -9,16 +9,29 @@ for (const key in rect) {
     }
 }
 console.log(`elem`, elem);
-
+function offset(el) {
+    var rect = el.getBoundingClientRect(),
+        scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+        scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
+}
+var offsetEl = offset(elem);
+console.log(offsetEl.left, offsetEl.top);
 
 const scrollTimeline = new ViewTimeline({
-    source: document.documentElement,
-    'subject': document.getElementById("project"), // For legacy implementations
+    // source: document.documentElement,
+    source: document.getElementById('scrollable'),
+    // 'subject': document.getElementById("SVG_wrapper"),
+    'subject': document.getElementById("subject"),
     'axis': 'block',
-    // 'inset': 'auto',
-    // scrollSource: document.getElementById("scrollable"), // For legacy implementations
+    // scrollSource: document.getElementById("scrollable"),
     orientation: 'block',
-    inset: [CSS.px(rect.top), CSS.px(rect.height)]
+    // 'inset': 'auto',
+    inset: [CSS.px('0'), CSS.px(rect.height)]
+    // inset: [CSS.px(rect.top), CSS.px(rect.height+rect.top)]
+    // inset: [CSS.px("800"), CSS.px("1500")]
+    // inset: '100px 916px'
+    // inset: [CSS.px("0"), CSS.px("627")],
 });
 
 const output = document.querySelector(".output");
@@ -735,6 +748,14 @@ class ScrollAnimation {
     }
 }
 
+if (window.scrollY) {
+    window.scroll(0, 200); // reset the scroll position to the top left of the document.
+}
+window.addEventListener("scroll", function() {
+
+    const maxHeight = document.body.scrollHeight - window.innerHeight;
+    console.log(window.pageYOffset, (window.pageYOffset * 100) / maxHeight);
+});
 // if (isSafari()) {
 //     injectSVG({src: INIT_SVG, el: document.getElementById("SVG_wrapper")});
 // } else {
