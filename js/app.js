@@ -1,8 +1,20 @@
-const scrollTimeline = new ScrollTimeline({
+const scrollTimeline = new ViewTimeline({
     source: document.documentElement,
-    scrollSource: document.getElementById("SVG_wrapper"), // For legacy implementations
+    'subject': document.getElementById("project"), // For legacy implementations
+    'axis': 'block',
+    // 'inset': 'auto',
+    // scrollSource: document.getElementById("scrollable"), // For legacy implementations
     orientation: 'block',
+    inset: [CSS.px(0), CSS.px(632)]
 });
+const elem = document.querySelector("#scrollable");
+const rect = elem.getBoundingClientRect();
+console.log(`height: ${rect.height}`, elem);
+const output = document.querySelector(".output");
+output.textContent += `Subject element: ${scrollTimeline.subject.nodeName}, `;
+output.textContent += `start offset: ${scrollTimeline.startOffset}, `;
+output.textContent += `end offset: ${scrollTimeline.endOffset}.`;
+
 
 class ScrollAnimation {
     constructor() {
@@ -12,7 +24,7 @@ class ScrollAnimation {
 
         this.init = this.init.bind(this);
         this.main = this.main.bind(this);
-        this.progressBar = this.progressBar.bind(this);
+        // this.progressBar = this.progressBar.bind(this);
 
     }
 
@@ -35,56 +47,78 @@ class ScrollAnimation {
 
     main() {
         const DURATION = 1;
+        const animHeight = document.querySelector("#scrollable").getBoundingClientRect().height;
+
+        /* convert percentage to tixels */
+        const c = (str) => {
+            const [text] = str.split('%');
+            const [rangeName, val] = text.split(' ')
+            return `${rangeName} ${Math.round(val * 0.01 * animHeight)}px`
+        }
 
         const commonProps = {
             duration: DURATION,
             fill: "both",
             easing: "ease-in-out",
             timeline: scrollTimeline,
-            rangeStart: "cover 0%",
-            rangeEnd: "cover 25%",
+            // rangeStart: "cover 0",
+            // rangeEnd: "cover 700px",
+        //
+        //     rangeStart: {
+        //     rangeName: "cover",
+        //         offset: 0,
+        //         // offset: new CSSMathSum(CSS.percent(0), new CSSMathProduct(CSS.number(2), CSS.px(100))),
+        // },
+        //     rangeEnd:{
+        //     rangeName: "cover",
+        //         offset: "25%"
+        //         // offset: new CSSMathSum(CSS.percent(100), CSS.px(-100)),
+        // },
+            rangeStart: c("cover 0%"),
+            rangeEnd: c("cover 25%"),
         }
+
 
         /** INITIAL CONSULTATION , DISCOVERY CALL */
         document.getElementById("b_idea").animate([
             {transform: "translate3d(0px, 0px, 0px) scale(1)", display: "initial"},
             {transform: "translate3d(30px, 380px, 0px) scale(0.65)", display: "none"},
-        ], {...commonProps, rangeStart: "cover 35%", rangeEnd: "cover 60%"})
+        ], {...commonProps, rangeStart: c("cover 35%"), rangeEnd: c("cover 60%")})
 
         document.getElementById("b_-2").animate(
             [
                 {transform: "translate3d(0px, 0px, 0px) scale(1)", display: "initial"},
                 {transform: "translate3d(15px, 260px, 0px) scale(0.75)", display: "none"},
             ],
-            {...commonProps, rangeStart: "cover 35%", rangeEnd: "cover 60%"},
+            {...commonProps,  rangeStart: c("cover 35%"),  rangeEnd: c("cover 60%")},
         );
         document.getElementById("arrow0").animate(
             [
                 {transform: "translate3d(0px, 0px, 0px) scale(1)", display: "initial"},
                 {transform: "translate3d(30px, 290px, 0px) scale(0.75)", display: "none"},
             ],
-            {...commonProps, rangeStart: "cover 35%", rangeEnd: "cover 60%"},
+            {...commonProps,  rangeStart: c("cover 35%"),  rangeEnd: c("cover 60%")},
         );
         document.getElementById("arrow1").animate(
             [
                 {transform: "translate3d(0px, 0px, 0px) scale(1)", display: "initial"},
                 {transform: "translate3d(40px, 260px, 0px) scale(0.6)", display: "none"},
             ],
-            {...commonProps, rangeStart: "cover 35%", rangeEnd: "cover 60%"},
+            {...commonProps,  rangeStart: c("cover 35%"),  rangeEnd: c("cover 60%")},
         );
         document.querySelector("#arrow_to_DESIGN_SERVICE path:first-child").animate(
             [
                 {d: "path('M201.33,248.76 L252.61,248.76 L252.61,540 L272.71,540')", display: "initial"},
                 {d: "path('M201.33,540 L252.61,540 L252.61,540 L272.71,540')", display: "none"},
             ],
-            {...commonProps, rangeStart: "cover 35%", rangeEnd: "cover 60%"},
+            {...commonProps,  rangeStart: c("cover 35%"),  rangeEnd: c("cover 60%")},
         );
         document.querySelector("#arrow_to_DESIGN_SERVICE path:last-child").animate(
             [
                 {display: "initial"},
                 {display: "none"},
             ],
-            {...commonProps, rangeStart: "cover 35%", rangeEnd: "cover 60%"},
+            {...commonProps,  rangeStart: c("cover 35%"),  rangeEnd: c("cover 60%")},
         );
         /***/
 
@@ -98,7 +132,6 @@ class ScrollAnimation {
             ],
             {...commonProps},
         )
-        // .onfinish = ()=>{b0.style.opacity = '0';};
 
         document.getElementById("arrow3").animate(
             [
@@ -108,179 +141,18 @@ class ScrollAnimation {
             {...commonProps},
         );
         /***/
-        /** PHOTOGRAPH PROJECT */
-        document.getElementById("b_-23").animate(
-            [
-                {transform: "translate3d(0px, 0px, 0px) scale(1)", display: "initial"},
-                {transform: "translate3d(0px, -470px, 0px) scale(1)", display: "none"},
-            ],
-            {...commonProps, rangeStart: "cover 25%", rangeEnd: "cover 50%",},
-        )
-        // .onfinish = ()=>{b0.style.opacity = '0';};
-
-        document.getElementById("arrow-PHOTOGRAPH-PROJECT").animate(
-            [
-                {transform: "translate3d(0px, 0px, 0px) scale(1, 1)", display: "initial"},
-                {transform: "translate3d(0px, 500px, 0px) scale(1, 0.05)", display: "none"},
-            ],
-            {...commonProps, rangeStart: "cover 25%", rangeEnd: "cover 50%",},
-        );
-        /***/
-        /***/
-
-        /** DESIGN PRESENTATION, CLIENT INPUT*/
-        document.querySelectorAll("#b_-28, #arrow_to_CLIENT_INPUT")
-            .forEach((el) => el.animate(
-                    [
-                        {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
-                        {transform: "translate3d(100px, 0px, 0px)", opacity: 1, display: "initial"},
-                        {transform: "translate3d(100px, -187px, 0px)", opacity: 1, display: "initial"},
-                        {transform: "translate3d(338px, -187px, 0px)", opacity: 1, display: "initial"},
-                        {transform: "translate3d(338px, -187px, 0px)", opacity: 0, display: "none"},
-                    ],
-                    {...commonProps, rangeEnd: "cover 45%"},
-                )
-            )
-
-        document.querySelector("#b_-27").animate(
-            [
-                {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
-                {transform: "translate3d(770px, 0px, 0px)", opacity: 1, display: "initial"},
-                {transform: "translate3d(770px, -128px, 0px)", opacity: 1, display: "initial"},
-                {transform: "translate3d(770px, -128px, 0px)", opacity: 0, display: "none"}
-            ], {...commonProps, rangeEnd: "cover 60%"});
-
-        document.querySelector("#arrow_to_DESIGN_PRESENTATION path:last-child").animate([
-            {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
-            {transform: "translate3d(55px, 0px, 0px)", opacity: 0, display: "none"},
-        ], {...commonProps, rangeEnd: "cover 10%"});
-
-        document.querySelector("#arrow_to_DESIGN_PRESENTATION path:first-child").animate([
-            {d: "path('M953.69,916.89 L953.69,1020')"},
-            {d: "path('M1143.99,885 L1144.54,990')"},
-            {d: "path('M1143.99,545 L1144.54,990')"},
-            {d: "path('M1143.99,545 L1144.54,950')"},
-            {d: "path('M1143.99,545 L1144.54,880')"},
-            {d: "path('M1143.99,545 L1144.54,545')"},
-        ], {...commonProps, rangeEnd: "cover 45%"});
-
-
-        document.querySelector("#arrow_to_SOURCING_SELECTING path:first-child").animate(
-            [
-                {d: "path('M411.27,957.52 L411.27,803.42 L654.95,803.42')"},
-                {d: "path('M510,957.52 L510,803.42 L654.95,803.42')", display: "initial"},
-                {d: "path('M510,804 L510,803.42 L654.95,803.42')", display: "initial"},
-                {d: "path('M660,803.42 L660,803.42 L660,803.42')", display: "initial"},
-                {d: "path('M680,803.42 L680,803.42 L680,803.42')", display: "initial"},
-                {d: "path('M680,803.42 L680,803.42 L680,803.42')", display: "none"},
-            ],
-            {...commonProps, rangeEnd: "cover 50%"},
-        );
-        document.querySelector(" #arrow_to_SOURCING_SELECTING path:last-child").animate(
-            [
-                {opacity: 1, display: "initial"},
-                {opacity: 1, display: "none"},
-            ], {...commonProps, rangeEnd: "cover 25%"});
-
-        document.querySelector("#line_DEVELOP_to_SOURCING").animate(
-            [
-                {clipPath: 'inset(0 0 0 0)', display: "initial"},
-                {clipPath: 'inset(0 0 50% 0)', display: "initial"},
-                {clipPath: 'inset(0 0 100% 0)', display: "initial"},
-            ],
-            {...commonProps});
-        document.querySelector("#arrow_to_CLIENT_INPUT").animate(
-            [
-                {clipPath: 'inset(0 0 0 0)', display: "initial"},
-                {clipPath: 'inset(0 50% 0 0)', display: "initial"},
-                {clipPath: 'inset(0 100% 0 0)', display: "initial"},
-            ],
-            {...commonProps});
-        /***/
-
-        /** BUDGET ESTIMATE*/
-        document.querySelectorAll("#b_")
-            .forEach((el) => el.animate([
-                    {transform: "translate3d(0px, 0px, 0px)", display: "initial"},
-                    {transform: "translate3d(480px, 0px, 0px)", display: "initial"},
-                    {transform: "translate3d(480px, 330px, 0px)", display: "none"},
-                ],
-                {...commonProps, rangeEnd: "cover 30%"},
-            ));
-
-        document.querySelector("#arrow_to_BUDGET_ESTIMATE path").animate(
-            [
-                {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
-                {transform: "translate3d(300px, 0px, 0px)", opacity: 1, display: "initial"},
-                {transform: "translate3d(300px, 0px, 0px)", opacity: 0, display: "initial"},
-                {transform: "translate3d(320px, 0px, 0px)", opacity: 0, display: "none"},],
-            {...commonProps, rangeEnd: "cover 29%"},
-        );
-        document.querySelector("#arrow_to_BUDGET_ESTIMATE polyline").animate(
-            [
-                {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
-                {transform: "translate3d(40px, 0px, 0px)", clipPath: 'inset(0 0 0 95% )', display: "initial"},
-                {transform: "translate3d(40px, 0px, 0px)", clipPath: 'inset(100% 0  0 100%)', display: "initial"},
-            ],
-            {...commonProps, rangeEnd: "cover 30%"},
-        );
-        /***/
-
-        /** SPECIFICATION NOTEBOOK, BUDGET UPDATE */
-        document.querySelector("#b_-10").animate([
-                {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
-                {transform: "translate3d(0px, 112px, 0px)", opacity: 1, display: "initial"},
-                {transform: "translate3d(265px, 112px, 0px)", opacity: 1, display: "initial"},
-                {transform: "translate3d(265px, 112px, 0px)", opacity: 0, display: "none"},
-            ], {...commonProps, rangeEnd: "cover 50%"},
-        )
-        document.querySelector("#b_-11").animate([
-                {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
-                {transform: "translate3d(0px, 128px, 0px)", opacity: 1, display: "initial"},
-                {transform: "translate3d(228px, 128px, 0px)", opacity: 1, display: "initial"},
-                {transform: "translate3d(228px, 128px, 0px)", opacity: 0, display: "none"},
-            ], {...commonProps, rangeEnd: "cover 50%"},
-        )
-        document.querySelectorAll("#peak_to_SPECIFICATION_NOTEBOOK, #peak_to_BUDGET_UPDATE")
-            .forEach((el) => el.animate(
-                [
-                    {opacity: 1, display: "initial"},
-                    {opacity: 0, display: "none"},
-                ],
-                {...commonProps},
-            ))
-
-
-        document.querySelectorAll("#arrow_to_SPECIFICATION_NOTEBOOK path, #arrow_to_BUDGET_UPDATE path")
-            .forEach((el) => el.animate(
-                [
-                    {opacity: 1, display: "initial"},
-                    {opacity: 0, display: "none"},
-                ],
-                {...commonProps},
-            ))
-        document.querySelectorAll("#arrow_to_SPECIFICATION_NOTEBOOK, #arrow_to_BUDGET_UPDATE")
-            .forEach((el) => el.animate(
-                [
-                    {clipPath: 'inset(0 0 0 0)', display: "initial"},
-                    {clipPath: 'inset(50% 0 0 0)', display: "initial"},
-                    {clipPath: 'inset(50% 0 0 15%)', display: "none"},
-                ],
-                {...commonProps},
-            ))
-        /***/
         /** SITE SURVEY, RESEARCH, CONCEPTUAL DESIGN PRESENTATION, PRELIMINARY DRAWINGS, TRADE DAY */
         document.querySelector("#b_-30").animate([
                 {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
                 {transform: "translate3d(-131px, 0px, 0px)", opacity: 1, display: "initial"},
                 {transform: "translate3d(-131px, -156px, 0px)", opacity: 1, display: "none"},
-            ], {...commonProps, rangeEnd: "cover 25%"},
+            ], {...commonProps, rangeEnd: c("cover 25%")},
         )
         document.querySelector("#b_research").animate([
                 {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
                 {transform: "translate3d(-131px, 0px, 0px)", opacity: 1, display: "initial"},
                 {transform: "translate3d(-131px, 220px, 0px)", opacity: 1, display: "none"},
-            ], {...commonProps, rangeEnd: "cover 25%"},
+            ], {...commonProps,  rangeEnd: c("cover 25%")},
         )
         document.querySelectorAll("#b_scanspace-3, #arrow_to_CONCEPTUAL_DESIGN_PRESENTATION path:last-child")
             .forEach((el) => el.animate([
@@ -288,7 +160,7 @@ class ScrollAnimation {
                     {transform: "translate3d(0, -50px, 0px)", clipPath: 'inset(0 0 0 0)',},
                     {transform: "translate3d(0px, -50px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
                     {transform: "translate3d(50px, -50px, 0px)", clipPath: 'inset(8% 0 11% 0)', display: "none"},
-                ], {...commonProps, rangeEnd: "cover 40%"},
+                ], {...commonProps,  rangeEnd: c("cover 40%")},
             ))
         document.querySelectorAll("#arrow_to_CONCEPTUAL_DESIGN_PRESENTATION path:first-child")
             .forEach((el) => el.animate([
@@ -296,45 +168,27 @@ class ScrollAnimation {
                     {transform: "translate3d(0, -50px, 0px)", clipPath: 'inset(0 0 0 0)',},
                     {transform: "translate3d(0px, -50px, 0px)", clipPath: 'inset(0 0 0 0)',},
                     {transform: "translate3d(0px, -50px, 0px)", clipPath: 'inset(8% 0 11% 0)',},
-                ], {...commonProps, rangeEnd: "cover 40%"},
+                ], {...commonProps,  rangeEnd: c("cover 40%")},
             ))
         document.querySelectorAll("#b_sharevision")
             .forEach((el) => el.animate([
                     {opacity: 0, display: "initial"},
                     {opacity: 1, display: "initial"},
-                ], {...commonProps, rangeStart: "cover 30%", rangeEnd: "cover 40%"},
+                ], {...commonProps,  rangeStart: c("cover 30%"),  rangeEnd: c("cover 40%")},
             ))
 
         document.querySelectorAll("#b_scanspace-4")
             .forEach((el) => el.animate([
                     {opacity: 0, display: "initial"},
                     {opacity: 1, display: "initial"},
-                ], {...commonProps, rangeStart: "cover 85%", rangeEnd: "cover 90%"},
-            ))
-
-
-
-
-
-        document.querySelectorAll("#b_-7")
-            .forEach((el) => el.animate([
-                    {transform: "translate3d(0px, 0px, 0px)"},
-                    {transform: "translate3d(0, -50px, 0px)"},
-                    {transform: "translate3d(0, -52px, 0px)"},
-                    {transform: "translate3d(0, -52px, 0px)"},
-                    {transform: "translate3d(0, -52px, 0px)"},
-                    {transform: "translate3d(0, -52px, 0px)"},
-                    {transform: "translate3d(0, -52px, 0px)"},
-                    {transform: "translate3d(0, -52px, 0px)"},
-                    {transform: "translate3d(-280px, -52px, 0px)"},
-                ], {...commonProps, rangeEnd: "cover 80%"},
+                ], {...commonProps,  rangeStart: c("cover 85%"),  rangeEnd: c("cover 90%")},
             ))
         document.querySelectorAll(" #b_-6")
             .forEach((el) => el.animate([
                     {transform: "translate3d(0px, 0px, 0px)"},
                     {transform: "translate3d(560px, 0px, 0px)"},
                     {transform: "translate3d(560px, -212px, 0px)"},
-                ], {...commonProps, rangeEnd: "cover 50%"},
+                ], {...commonProps, rangeEnd: c("cover 50%")},
             ))
         document.querySelectorAll("#arrow_to_PRELIMINARY_DRAWINGS")
             .forEach((el) => el.animate([
@@ -343,7 +197,7 @@ class ScrollAnimation {
                 {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
                 {transform: "translate3d(50px, 0px, 0px)", clipPath: 'inset(0 0 0 80%)', display: "initial"},
                 {transform: "translate3d(50px, 0px, 0px)", clipPath: 'inset(0 0 100% 80%)', display: "none"},
-                ], {...commonProps, rangeStart: "cover 0", rangeEnd: "cover 50%"},
+                ], {...commonProps, rangeStart: c("cover 0%"),  rangeEnd: c("cover 50%")},
             ))
         document.querySelectorAll("#arrow_to_SITE_SURVAEY path, #arrow_to_REASERCH path")
             .forEach((el) => el.animate(
@@ -352,95 +206,15 @@ class ScrollAnimation {
                     {transform: "translate3d(-23px, 0px, 0px)", opacity: 1, display: "initial"},
                     {transform: "translate3d(-23px, 0px, 0px)", opacity: 0, display: "none"},
                 ],
-                {...commonProps, rangeEnd: "cover 10%"},
-            ))
-        document.querySelector("#arrow_to_REASERCH polyline").animate([
-                {clipPath: 'inset(0 0 0 0)', display: "initial"},
-                {clipPath: 'inset(0% 75% 0 0)', display: "initial"},
-                {clipPath: 'inset(100% 100% 0 0)', display: "none"},
-            ],
-            {...commonProps, rangeEnd: "cover 22%"},
-        )
-        document.querySelectorAll("#arrow_to_SITE_SURVAEY polyline:first-child")
-            .forEach((el) => el.animate(
-                [
-                    {clipPath: 'inset(0 0 0 0)', display: "initial"},
-                    {clipPath: 'inset(0 50% 0 0)', display: "initial"},
-                    {clipPath: 'inset(0 50%  100% 0)', display: "none"},
-                ],
-                {...commonProps, rangeEnd: "cover 22%"},
+                {...commonProps,  rangeEnd: c("cover 10%")},
             ))
         document.querySelector("#line_RESERCH_SITE_SURVAEY").animate([
                 {d: "path('M628.59,324.26 L666.03,324.26 L666.03,698.16 L628.59,698.03')", display: "initial"},
                 {d: "path('M490,324.26 L666.03,324.26 L666.03,698.16 L490,698.03')", display: "initial"},
                 {d: "path('M498.59,540 L666.03,540 L666.03,540 L490,540')", display: "initial"},
             ],
-            {...commonProps, rangeEnd: "cover 25%"},
+            {...commonProps,  rangeEnd: c("cover 25%")},
         )
-        /***/
-
-        /** ITEMS SHIPPED, ORDERS PLACED*/
-        document.querySelector(" #b_-14").animate([
-                {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
-                {transform: "translate3d(0px, -198px, 0px)", opacity: 1, display: "initial"},
-                {transform: "translate3d(0px, -198px, 0px)", opacity: 0, display: "none"},
-            ], {...commonProps, rangeEnd: "cover 33%"},
-        );
-        document.querySelector(" #arrow_to_FINAL_INVOICES").animate([
-                {clipPath: 'inset(0 0 0 0)', display: "initial"},
-                {clipPath: 'inset(0 0 100% 0)', display: "none"},
-            ], {...commonProps, rangeEnd: "cover 18.5%"},
-        );
-        document.querySelector(" #arrow_to_ORDER_PLACED path:last-child").animate([
-                {opacity: 1, display: "initial"},
-                {opacity: 0, display: "none"},
-            ], {...commonProps, rangeEnd: "cover 5%"},
-        );
-
-        document.querySelectorAll(" #b_-25")
-            .forEach((el) => el.animate([
-                    {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
-                    {transform: "translate3d(0px, -198px, 0px)", opacity: 1, display: "initial"},
-                    {transform: "translate3d(0px, -198px, 0px)", opacity: 1, display: "initial"},
-                    {transform: "translate3d(0px, -198px, 0px)", opacity: 1, display: "initial"},
-                    {transform: "translate3d(0px, -198px, 0px)", opacity: 1, display: "initial"},
-                    {transform: "translate3d(0px, -198px, 0px)", opacity: 1, display: "initial"},
-                    {transform: "translate3d(0px, -198px, 0px)", opacity: 1, display: "initial"},
-                    {transform: "translate3d(0px, -198px, 0px)", opacity: 1, display: "initial"},
-                    {transform: "translate3d(0px, -198px, 0px)", opacity: 1, display: "none"},
-                ], {...commonProps, rangeEnd: "cover 70%"},
-            ))
-        document.querySelectorAll("#arrow_to_ITEMS_SHIPPED")
-            .forEach((el) => el.animate([
-                    {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
-                    {transform: "translate3d(0px, -198px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
-                    {transform: "translate3d(0px, -198px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
-                    {transform: "translate3d(0px, -198px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
-                    {transform: "translate3d(0px, -198px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
-                    {transform: "translate3d(0px, -198px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
-                    {transform: "translate3d(0px, -198px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
-                    {transform: "translate3d(0px, -198px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
-                    {transform: "translate3d(0px, -198px, 0px)", clipPath: 'inset(50% 50% 50% 50%)', display: "none"},
-                ], {...commonProps, rangeEnd: "cover 70%"},
-            ))
-
-        document.querySelector("#arrow_to_ORDER_PLACED path:first-child").animate([
-                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,469.23 L1151.01,469.23')", display: "initial"},
-                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,430 L1151.01,430')", display: "initial"},
-                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,300 L1151.01,300')", display: "initial"},
-                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1151.01,270')", display: "initial"},
-                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1151.01,270')", display: "initial"},
-                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1151.01,270')", display: "initial"},
-                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1151.01,270')", display: "initial"},
-                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1151.01,270')", display: "initial"},
-                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1151.01,270')", display: "initial"},
-                {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1151.01,270')", display: "initial"},
-                {d: "path('M1726,291.76 L1726,291.76 L1726,270 L1151.01,270')", opacity: '1',display: "initial"},
-                {d: "path('M1726,291.76 L1726,291.76 L1726,270 L1726,270')", opacity: '0', display: "none"},
-            ],
-            {...commonProps, easing: "linear", rangeStart: "cover 1%", rangeEnd: "cover 78%"},
-        );
-
         /***/
 
         /** SOURCING AND SELECTING, DEVELOP DRAWINGS */
@@ -450,7 +224,7 @@ class ScrollAnimation {
                     {transform: "translate3d(396px, 0px, 0px)", opacity: 1, display: "initial"},
                     {transform: "translate3d(396px, 0px, 0px)", opacity: 0, display: "initial"},
                     {transform: "translate3d(396px, 0px, 0px)", opacity: 0, display: "none"},
-                ], {...commonProps, rangeStart: "cover 40%", rangeEnd: "cover 55%"},
+                ], {...commonProps,  rangeStart: c("cover 40%"),  rangeEnd: c("cover 55%")},
             ))
         document.querySelectorAll("#b_-29")
             .forEach((el) => el.animate([
@@ -458,17 +232,17 @@ class ScrollAnimation {
                     {transform: "translate3d(0px, -320px, 0px)", opacity: 1, display: "initial"},
                     {transform: "translate3d(0px, -320px, 0px)", opacity: 0, display: "initial"},
                     {transform: "translate3d(0px, -320px, 0px)", opacity: 0, display: "none"},
-                ], {...commonProps, rangeStart: "cover 45%", rangeEnd: "cover 70%"},
+                ], {...commonProps,  rangeStart: c("cover 45%"),  rangeEnd: c("cover 70%")},
             ))
         document.querySelector(" #arrow_to_SOURCING").animate([
                 {clipPath: 'inset(0 0 0 0)', display: "initial"},
                 {clipPath: 'inset(0 0 0 100%)', display: "none"},
-            ], {...commonProps, rangeStart: "cover 40%", rangeEnd: "cover 50%"},
+            ], {...commonProps,  rangeStart: c("cover 40%"),  rangeEnd: c("cover 50%")},
         );
         document.querySelector(" #arrow_to_DEVELOP_DRAWING").animate([
                 {clipPath: 'inset(0 0 0 0)', display: "initial"},
                 {clipPath: 'inset(0 0 100% 0)', display: "none"},
-            ], {...commonProps, rangeStart: "cover 47%", rangeEnd: "cover 56%"},
+            ], {...commonProps,  rangeStart: c("cover 47%"),  rangeEnd: c("cover 56%")},
         );
         /***/
         /** FINAL DESIGN */
@@ -479,14 +253,14 @@ class ScrollAnimation {
                 {transform: "translate3d(-460px, -21px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
                 {transform: "translate3d(-590px, -21px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
                 {transform: "translate3d(-590px, -21px, 0px)", clipPath: 'inset(10% 10% 10% 10%)', display: "none"},
-                ], {...commonProps, rangeStart: "cover 25%", rangeEnd: "cover 70%"},
+                ], {...commonProps,  rangeStart: c("cover 25%"),  rangeEnd: c("cover 70%")},
             ));
         document.querySelectorAll("#b_-9, #arrow_to_CLIENT_APPROVAL path:last-child")
             .forEach((el) => el.animate([
                     {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
                     {transform: "translate3d(0px, 212px, 0px)", opacity: 1, display: "initial"},
                     {transform: "translate3d(0px, 212px, 0px)", opacity: 1, display: "none"},
-                ], {...commonProps, rangeStart: "cover 40%", rangeEnd: "cover 56%"},
+                ], {...commonProps,  rangeStart: c("cover 40%"),  rangeEnd: c("cover 56%")},
             ));
 
         document.querySelectorAll("#b_-13")
@@ -497,13 +271,13 @@ class ScrollAnimation {
                     {transform: "translate3d(-230px, -21px, 0px)", opacity: 1, display: "none"},
                     {transform: "translate3d(-330px, -21px, 0px)", opacity: 1, display: "none"},
                     {transform: "translate3d(-330px, -21px, 0px)", opacity: 1, display: "none"},
-                ], {...commonProps, rangeStart: "cover 25%", rangeEnd: "cover 50%"},
+                ], {...commonProps,  rangeStart: c("cover 25%"),  rangeEnd: c("cover 50%")},
             ));
         document.querySelectorAll("#arrow_to_PROPOSALS_FOR_MERCHANDISE path, #arrow_to_PAYMENT_COLLECTED")
             .forEach(el => el.animate([
                 {display: "initial"},
                 {display: "none"},
-            ], {...commonProps, rangeStart: "cover 25%", rangeEnd: "cover 26%"},
+            ], {...commonProps,  rangeStart: c("cover 25%"),  rangeEnd: c("cover 26%")},
         ));
         /***/
 
@@ -515,14 +289,14 @@ class ScrollAnimation {
                     {transform: "translate3d(506px, 70px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
                     {transform: "translate3d(506px, 70px, 0px)", clipPath: 'inset(30% 30% 30% 30%)', display: "initial"},
                     {transform: "translate3d(506px, 70px, 0px)", clipPath: 'inset(30% 30% 30% 30%)', display: "none"},
-                ], {...commonProps, rangeEnd: "cover 25%"},
+                ], {...commonProps,  rangeEnd: c("cover 25%")},
             ));
         document.querySelectorAll("#b_-20")
             .forEach((el) => el.animate([
                     {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
                     {transform: "translate3d(0px, 111px, 0px)", opacity: 1, display: "initial"},
                     {transform: "translate3d(0px, 111px, 0px)", opacity: 1, display: "none"},
-                ], {...commonProps, rangeEnd: "cover 25%"},
+                ], {...commonProps,  rangeEnd: c("cover 25%")},
             ));
 
         document.querySelectorAll("#b_-19")
@@ -530,7 +304,7 @@ class ScrollAnimation {
                     {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
                     {transform: "translate3d(0px, 221px, 0px)", opacity: 1, display: "initial"},
                     {transform: "translate3d(0px, 221px, 0px)", opacity: 1, display: "none"},
-                ], {...commonProps, rangeStart: "cover 5%", rangeEnd: "cover 30%"},
+                ], {...commonProps,  rangeStart: c("cover 5%"),  rangeEnd: c("cover 30%")},
             ));
 
         document.querySelectorAll("#b_-18")
@@ -538,7 +312,7 @@ class ScrollAnimation {
                     {transform: "translate3d(0px, 0px, 0px)", opacity: 1, display: "initial"},
                     {transform: "translate3d(0px, 336px, 0px)", opacity: 1, display: "initial"},
                     {transform: "translate3d(0px, 336px, 0px)", opacity: 1, display: "none"},
-                ], {...commonProps, rangeStart: "cover 10%", rangeEnd: "cover 36%"},
+                ], {...commonProps,  rangeStart: c("cover 10%"),  rangeEnd: c("cover 36%")},
             ));
 
         document.querySelectorAll("#b_-17")
@@ -547,7 +321,7 @@ class ScrollAnimation {
                     {transform: "translate3d(199px, 0px, 0px)", opacity: 1, display: "initial"},
                     {transform: "translate3d(199px, 403px, 0px)", opacity: 1, display: "initial"},
                     {transform: "translate3d(199px, 403px, 0px)", opacity: 1, display: "none"},
-                ], {...commonProps, rangeStart: "cover 10%", rangeEnd: "cover 40%"},
+                ], {...commonProps,  rangeStart: c("cover 10%"),  rangeEnd: c("cover 40%")},
             ));
 
         document.querySelectorAll("#b_-16")
@@ -556,21 +330,21 @@ class ScrollAnimation {
                     {transform: "translate3d(666px, 0px, 0px)", opacity: 1, display: "initial"},
                     {transform: "translate3d(666px, 403px, 0px)", opacity: 1, display: "initial"},
                     {transform: "translate3d(666px, 403px, 0px)", opacity: 1, display: "none"},
-                ], {...commonProps, rangeStart: "cover 10%", rangeEnd: "cover 50%"},
+                ], {...commonProps,  rangeStart: c("cover 10%"),  rangeEnd: c("cover 50%")},
             ));
 
         document.querySelectorAll("#arrow_to_PAYMENT_COLLECTION_2, #arrow_to_INSTALLATION, #arrow_to_PAYMENT_COLLECTED, #arrow_to_STYLING, #arrow_to_PROJECT_WRAP, #arrow_to_FINAL_INVOICING, #arrow_to_CLIENT_DECIDES")
             .forEach(el => el.animate([
                     {opacity: 1, display: "initial"},
                     {opacity: 0, display: "none"},
-                ], {...commonProps, rangeStart: "cover 1%", rangeEnd: "cover 5%"},
+                ], {...commonProps,  rangeStart: c("cover 1%"),  rangeEnd: c("cover 5%")},
             ));
         document.querySelectorAll("#arrow-DECIDES_FINAL_INVOICES")
             .forEach(el => el.animate([
                     {clipPath: 'inset(0 0 0 0)', display: "initial"},
                     {clipPath: 'inset(0 0 0 100%)', display: "initial"},
                     // {clipPath: 'inset(0 0 0 0)', display: "none"},
-                ], {...commonProps, rangeStart: "cover 6%", rangeEnd: "cover 13%"},
+                ], {...commonProps, rangeStart: c("cover 6%"), rangeEnd: c("cover 13%")},
             ));
 
 
@@ -580,7 +354,7 @@ class ScrollAnimation {
                     {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
                     {transform: "translate3d(195px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', display: "initial"},
                     {transform: "translate3d(195px, 0px, 0px)", clipPath: 'inset(10% 15% 10% 15%)', display: "initial"},
-                ], {...commonProps, rangeStart: "cover 60%", rangeEnd: "cover 80%"},
+                ], {...commonProps,  rangeStart: c("cover 60%"),  rangeEnd: c("cover 80%")},
             ));
 
         document.querySelectorAll("#b_-8")
@@ -588,14 +362,14 @@ class ScrollAnimation {
                     {transform: "translate3d(0px, 0px, 0px)", display: "initial"},
                     {transform: "translate3d(0px, -323px, 0px)", display: "initial"},
                     {transform: "translate3d(-440px, -323px, 0px)", display: "none"},
-                ], {...commonProps, rangeStart: "cover 60%", rangeEnd: "cover 90%"},
+                ], {...commonProps,  rangeStart: c("cover 60%"),  rangeEnd: c("cover 90%")},
             ));
 
         document.querySelectorAll("#b_generate")
             .forEach((el) => el.animate([
                     {opacity: 0},
                     {opacity: 1},
-                ], {...commonProps, rangeStart: "cover 85%", rangeEnd: "cover 90%"},
+                ], {...commonProps,  rangeStart: c("cover 85%"),  rangeEnd: c("cover 90%")},
             ));
 
 
@@ -604,14 +378,14 @@ class ScrollAnimation {
                     {clipPath: "circle(600px at right top)", display: "initial"},
                     {clipPath: "circle(100px at right top)", display: "initial"},
                     {clipPath: "circle(5px at right top)", display: "initial"},
-                ], {...commonProps, rangeStart: "cover 55%", rangeEnd: "cover 70%"},
+                ], {...commonProps,  rangeStart: c("cover 55%"),  rangeEnd: c("cover 70%")},
             ));
         document.querySelectorAll("#arrow_to_PROPOSALS_FOR_MERCHANDISE line:first-child")
             .forEach((el) => el.animate([
                     {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', opacity: 1, display: "initial"},
                     {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 21% 0 )', opacity: 1, display: "initial"},
                     {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 61% 0 )', opacity: 0, display: "none"},
-                ], {...commonProps, rangeStart: "cover 64%", rangeEnd: "cover 80%"},
+                ], {...commonProps,  rangeStart: c("cover 64%"),  rangeEnd: c("cover 80%")},
             ));
         document.querySelectorAll("#b_-15")
             .forEach((el) => el.animate([
@@ -621,13 +395,13 @@ class ScrollAnimation {
                     {transform: "translate3d(-20px, 134px, 0px)", display: "initial"},
                     {transform: "translate3d(458px, 134px, 0px)", display: "initial"},
                     {transform: "translate3d(458px, 404px, 0px)", display: "none"},
-                ], {...commonProps, rangeStart: "cover 50%", rangeEnd: "cover 87%"},
+                ], {...commonProps,  rangeStart: c("cover 50%"),  rangeEnd: c("cover 87%")},
             ));
         document.querySelectorAll("#b_shopdesign")
             .forEach((el) => el.animate([
                     {opacity: 0},
                     {opacity: 1},
-                ], {...commonProps, rangeStart: "cover 85%", rangeEnd: "cover 90%"},
+                ], {...commonProps,  rangeStart: c("cover 85%"),  rangeEnd: c("cover 90%")},
             ));
 
         document.querySelectorAll("#arrow_to_DREAM_HOME path:first-child")
@@ -646,72 +420,72 @@ class ScrollAnimation {
                 {d: "path('M1860, 530 L1860, 505.58 L1860,250 L1600,250 L1600,550')", display: "initial"},
                 {d: "path('M1860, 530 L1860, 505.58 L1860,530 L1600,530 L1600,550')", display: "initial"},
                 {d: "path('M1860, 530 L1860, 505.58 L1860,540 L1600,540 L1600,550')", display: "none"},
-                ], {...commonProps, rangeStart: "cover 60%", rangeEnd: "cover 90%"},
+                ], {...commonProps, rangeStart: c("cover 60%"), rangeEnd: c("cover 90%")},
             ));
 
         document.querySelector("#b_-21").animate([
                     {transform: "translate3d(0px, 0px, 0px)", display: "initial"},
                     {transform: "translate3d(-200px, 0px, 0px)", display: "initial"},
-                ], {...commonProps, rangeStart: "cover 75%", rangeEnd: "cover 77.5%"},);
+                ], {...commonProps,  rangeStart: c("cover 75%"), rangeEnd: "cover 78%"},);
 
         document.querySelector("#arrow_to_DREAM_HOME path:last-child").animate([
                     {opacity: 1, display: "initial"},
                     {opacity: 0, display: "none"},
-                ], {...commonProps, rangeStart: "cover 70%", rangeEnd: "cover 75%"},);
+                ], {...commonProps,  rangeStart: c("cover 70%"),  rangeEnd: c("cover 75%")},);
 
         document.querySelector("#b_-4").animate([
             {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)'},
             {transform: "translate3d(231px, 0px, 0px)", clipPath: 'inset(24% 0% 24% 0%)'},
-                ], {...commonProps,  easing: "ease-in-out", rangeStart: "cover 60%", rangeEnd: "cover 75%"},);
+                ], {...commonProps,  easing: "ease-in-out",  rangeStart: c("cover 60%"),  rangeEnd: c("cover 75%")},);
 
         document.querySelector("#final_arrow_1").animate([
             {transform: "translate3d(-235px, 0px, 0px)", display: "none"},
             {transform: "translate3d(0px, 0px, 0px)", display: "initial"},
-                ], {...commonProps, easing: "ease-in-out", rangeStart: "cover 60%", rangeEnd: "cover 75%"},);
+                ], {...commonProps, easing: "ease-in-out",  rangeStart: c("cover 60%"),  rangeEnd: c("cover 75%")},);
 
         document.querySelector("#final_arrow_2").animate([
             {transform: "translate3d(-235px, 0px, 0px)", display: "none"},
             {transform: "translate3d(0px, 0px, 0px)", display: "initial"},
-                ], {...commonProps, easing: "ease-in-out", rangeStart: "cover 60%", rangeEnd: "cover 75%"},
+                ], {...commonProps, easing: "ease-in-out",  rangeStart: c("cover 60%"),  rangeEnd: c("cover 75%")},
             );
 
         document.querySelector("#final_arrow_3").animate([
             {transform: "translate3d(-235px, 0px, 0px)", display: "none"},
             {transform: "translate3d(0px, 0px, 0px)", display: "initial"},
-                ], {...commonProps, easing: "ease-in-out", rangeStart: "cover 60%", rangeEnd: "cover 75%"},
+                ], {...commonProps, easing: "ease-in-out",  rangeStart: c("cover 60%"),  rangeEnd: c("cover 75%")},
             );
 
         document.querySelector("#final_arrow_4").animate([
             {transform: "translate3d(0, 0px, 0px)", display: "none"},
             {transform: "translate3d(0px, 0px, 0px)", display: "initial"},
-                ], {...commonProps, easing: "ease-in-out", rangeStart: "cover 80%", rangeEnd: "cover 85%"},
+                ], {...commonProps, easing: "ease-in-out",  rangeStart: c("cover 80%"),  rangeEnd: c("cover 85%")},
             );
 
         document.querySelector("#final_arrow_5").animate([
             {transform: "translate3d(0, 0px, 0px)", display: "none"},
             {transform: "translate3d(0px, 0px, 0px)", display: "initial"},
-                ], {...commonProps, easing: "ease-in-out", rangeStart: "cover 90%", rangeEnd: "cover 95%"},
+                ], {...commonProps, easing: "ease-in-out",  rangeStart: c("cover 90%"),  rangeEnd: c("cover 95%")},
             );
 
         document.querySelector("#SCAN_SPACE").animate([
             {transform: "translate3d(150px, 220px, 0px) scale(0.75)", opacity: 0, display: "none"},
             {transform: "translate3d(0px, 0px, 0px) scale(1)", opacity: 1, display: "initial"},
-                ], {...commonProps, easing: "ease-out", rangeStart: "cover 90%", rangeEnd: "cover 100%"},
+                ], {...commonProps, easing: "ease-out",  rangeStart: c("cover 90%"),  rangeEnd: c("cover 100%")},
             );
         document.querySelector("#BUDGET_BAG").animate([
             {transform: "translate3d(220px, 220px, 0px) scale(0.75)", opacity: 0, display: "none"},
             {transform: "translate3d(0px, 0px, 0px) scale(1)", opacity: 1, display: "initial"},
-                ], {...commonProps, easing: "ease-out", rangeStart: "cover 90%", rangeEnd: "cover 100%"},
+                ], {...commonProps, easing: "ease-out",  rangeStart: c("cover 90%"),  rangeEnd: c("cover 100%")},
             );
         document.querySelector("#BESPOKE_DESIGN").animate([
             {transform: "translate3d(320px, 220px, 0px) scale(0.75)", opacity: 0, display: "none"},
             {transform: "translate3d(0px, 0px, 0px) scale(1)", opacity: 1, display: "initial"},
-                ], {...commonProps, easing: "ease-out", rangeStart: "cover 90%", rangeEnd: "cover 100%"},
+                ], {...commonProps, easing: "ease-out",  rangeStart: c("cover 90%"),  rangeEnd: c("cover 100%")},
             );
         document.querySelector("#SHOP_DESIGN").animate([
             {transform: "translate3d(390px, 220px, 0px) scale(0.75)", opacity: 0, display: "none"},
             {transform: "translate3d(0px, 0px, 0px) scale(1)", opacity: 1, display: "initial"},
-                ], {...commonProps, easing: "ease-out", rangeStart: "cover 90%", rangeEnd: "cover 100%"},
+                ], {...commonProps, easing: "ease-out",  rangeStart: c("cover 90%"),  rangeEnd: c("cover 100%")},
             );
 
 
