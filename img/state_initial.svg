@@ -964,31 +964,31 @@
                 <path d="M1652.45,547.75v-14.91h2.14l9.18,13.18-2.45-2.17h1v-11.01h2.3v14.91h-2.14l-9.18-13.2,2.45,2.16h-1v11.04h-2.3Z"/>
             </g>
         </g>
-        <g id="final_arrow_1" style="transform:translate3d(-235px, 0px, 0px),  display: none">
+        <g id="final_arrow_1" style="transform:translate3d(-235px, 0px, 0px), visibility: hidden">
             <line x1="433.72" y1="540" x2="507.16" y2="540" fill="none" stroke="#fff" stroke-miterlimit="10"
                   stroke-width="2"/>
             <path d="M498.27,546.24c-.19-.3-.1-.7,.2-.9l8.39-5.34-8.39-5.34c-.3-.19-.39-.6-.2-.9,.19-.3,.6-.39,.9-.2l9.25,5.89c.19,.12,.3,.33,.3,.55s-.11,.43-.3,.55l-9.25,5.89c-.11,.07-.23,.1-.35,.1-.21,0-.42-.11-.55-.3Z"
                   fill="#fff"/>
         </g>
-        <g id="final_arrow_2" style="transform:translate3d(-235px, 0px, 0px);  display: none">
+        <g id="final_arrow_2" style="transform:translate3d(-235px, 0px, 0px); visibility: hidden">
             <line x1="693.72" y1="540" x2="767.16" y2="540" fill="none" stroke="#fff" stroke-miterlimit="10"
                   stroke-width="2"/>
             <path d="M758.27,546.24c-.19-.3-.1-.7,.2-.9l8.39-5.34-8.39-5.34c-.3-.19-.39-.6-.2-.9,.19-.3,.6-.39,.9-.2l9.25,5.89c.19,.12,.3,.33,.3,.55s-.11,.43-.3,.55l-9.25,5.89c-.11,.07-.23,.1-.35,.1-.21,0-.42-.11-.55-.3Z"
                   fill="#fff"/>
         </g>
-        <g id="final_arrow_3" style="transform:translate3d(-235px, 0px, 0px);  display: none">
+        <g id="final_arrow_3" style="transform:translate3d(-235px, 0px, 0px); visibility: hidden">
             <line x1="1048.09" y1="540" x2="1121.53" y2="540" fill="none" stroke="#fff" stroke-miterlimit="10"
                   stroke-width="2"/>
             <path d="M1112.64,546.24c-.19-.3-.1-.7,.2-.9l8.39-5.34-8.39-5.34c-.3-.19-.39-.6-.2-.9,.19-.3,.6-.39,.9-.2l9.25,5.89c.19,.12,.3,.33,.3,.55s-.11,.43-.3,.55l-9.25,5.89c-.11,.07-.23,.1-.35,.1-.21,0-.42-.11-.55-.3Z"
                   fill="#fff"/>
         </g>
-        <g id="final_arrow_4" style=" display: none">
+        <g id="final_arrow_4" style="visibility: hidden">
             <line x1="1431.28" y1="540" x2="1504.72" y2="540" fill="none" stroke="#fff" stroke-miterlimit="10"
                   stroke-width="2"/>
             <path d="M1495.83,546.24c-.19-.3-.1-.7,.2-.9l8.39-5.34-8.39-5.34c-.3-.19-.39-.6-.2-.9,.19-.3,.6-.39,.9-.2l9.25,5.89c.19,.12,.3,.33,.3,.55s-.11,.43-.3,.55l-9.25,5.89c-.11,.07-.23,.1-.35,.1-.21,0-.42-.11-.55-.3Z"
                   fill="#fff"/>
         </g>
-        <g id="final_arrow_5" style=" display: none">
+        <g id="final_arrow_5" style="visibility: hidden">
             <line x1="1691.28" y1="540" x2="1764.72" y2="540" fill="none" stroke="#fff" stroke-miterlimit="10"
                   stroke-width="2"/>
             <path d="M1755.83,546.24c-.19-.3-.1-.7,.2-.9l8.39-5.34-8.39-5.34c-.3-.19-.39-.6-.2-.9,.19-.3,.6-.39,.9-.2l9.25,5.89c.19,.12,.3,.33,.3,.55s-.11,.43-.3,.55l-9.25,5.89c-.11,.07-.23,.1-.35,.1-.21,0-.42-.11-.55-.3Z"
