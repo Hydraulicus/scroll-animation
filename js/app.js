@@ -1,43 +1,12 @@
 const INIT_SVG = 'img/state_initial.svg';
 
-const elem = document.getElementById("subject");
-const rect = elem.getBoundingClientRect();
-for (const key in rect) {
-    if (typeof rect[key] !== "function") {
-
-        console.log(`bbox [${key}]`, rect[key]);
-    }
-}
-console.log(`elem`, elem);
-function offset(el) {
-    var rect = el.getBoundingClientRect(),
-        scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
-        scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
-}
-var offsetEl = offset(elem);
-console.log(offsetEl.left, offsetEl.top);
-
 const scrollTimeline = new ViewTimeline({
-    // source: document.documentElement,
     source: document.getElementById('scrollable'),
-    // 'subject': document.getElementById("SVG_wrapper"),
     'subject': document.getElementById("subject"),
     'axis': 'block',
-    // scrollSource: document.getElementById("scrollable"),
     orientation: 'block',
-    // 'inset': 'auto',
-    inset: [CSS.px('0'), CSS.px(rect.height)]
-    // inset: [CSS.px(rect.top), CSS.px(rect.height+rect.top)]
-    // inset: [CSS.px("800"), CSS.px("1500")]
-    // inset: '100px 916px'
-    // inset: [CSS.px("0"), CSS.px("627")],
+    inset: [CSS.px('0'), CSS.px(document.getElementById("subject").getBoundingClientRect().height)]
 });
-
-const output = document.querySelector(".output");
-output.textContent += `Subject element: ${scrollTimeline.subject.nodeName}, `;
-output.textContent += `start offset: ${scrollTimeline.startOffset}, `;
-output.textContent += `end offset: ${scrollTimeline.endOffset}.`;
 
 class ScrollAnimation {
     constructor() {
@@ -343,9 +312,6 @@ class ScrollAnimation {
             ))
 
 
-
-
-
         document.querySelectorAll("#b_-7")
             .forEach((el) => el.animate([
                     {transform: "translate3d(0px, 0px, 0px)"},
@@ -370,9 +336,9 @@ class ScrollAnimation {
             .forEach((el) => el.animate([
                     // {transform: "translate3d(0px, 0px, 0px)"},
                     // {transform: "translate3d(0, -50px, 0px)"},
-                {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', visibility: "visible"},
-                {transform: "translate3d(50px, 0px, 0px)", clipPath: 'inset(0 0 0 80%)', visibility: "visible"},
-                {transform: "translate3d(50px, 0px, 0px)", clipPath: 'inset(0 0 100% 80%)', visibility: "hidden"},
+                    {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', visibility: "visible"},
+                    {transform: "translate3d(50px, 0px, 0px)", clipPath: 'inset(0 0 0 80%)', visibility: "visible"},
+                    {transform: "translate3d(50px, 0px, 0px)", clipPath: 'inset(0 0 100% 80%)', visibility: "hidden"},
                 ], {...commonProps, rangeStart: "cover 0%", rangeEnd: "cover 50%"},
             ))
         document.querySelectorAll("#arrow_to_SITE_SURVAEY path, #arrow_to_REASERCH path")
@@ -402,7 +368,10 @@ class ScrollAnimation {
             ))
         document.querySelector("#line_RESERCH_SITE_SURVAEY").animate([
                 {d: "path('M628.59,324.26 L666.03,324.26 L666.03,698.16 L628.59,698.03')", visibility: "visible"},
-                {d: "path('M490,324.26 L666.03,324.26 L666.03,698.16 L490,698.03')", visibility: isSafari() ? "hidden" : "visible"},
+                {
+                    d: "path('M490,324.26 L666.03,324.26 L666.03,698.16 L490,698.03')",
+                    visibility: isSafari() ? "hidden" : "visible"
+                },
                 {d: "path('M498.59,540 L666.03,540 L666.03,540 L490,540')", visibility: isSafari() ? "hidden" : "visible"},
             ],
             {...commonProps, rangeEnd: "cover 25%"},
@@ -465,7 +434,7 @@ class ScrollAnimation {
                 {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1151.01,270')", visibility: "visible"},
                 {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1151.01,270')", visibility: "visible"},
                 {d: "path('M1726,291.76 L1272.91,291.76 L1272.91,270 L1151.01,270')", visibility: "visible"},
-                {d: "path('M1726,291.76 L1726,291.76 L1726,270 L1151.01,270')", opacity: '1',visibility: "visible"},
+                {d: "path('M1726,291.76 L1726,291.76 L1726,270 L1151.01,270')", opacity: '1', visibility: "visible"},
                 {d: "path('M1726,291.76 L1726,291.76 L1726,270 L1726,270')", opacity: '0', visibility: "hidden"},
             ],
             {...commonProps, easing: "linear", rangeStart: "cover 1%", rangeEnd: "cover 78%"},
@@ -504,11 +473,15 @@ class ScrollAnimation {
         /** FINAL DESIGN */
         document.querySelectorAll("#b_-12")
             .forEach((el) => el.animate([
-                {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', visibility: "visible"},
-                {transform: "translate3d(-460px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', visibility: "visible"},
-                {transform: "translate3d(-460px, -21px, 0px)", clipPath: 'inset(0 0 0 0)', visibility: "visible"},
-                {transform: "translate3d(-590px, -21px, 0px)", clipPath: 'inset(0 0 0 0)', visibility: "visible"},
-                {transform: "translate3d(-590px, -21px, 0px)", clipPath: 'inset(10% 10% 10% 10%)', visibility: "hidden"},
+                    {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', visibility: "visible"},
+                    {transform: "translate3d(-460px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', visibility: "visible"},
+                    {transform: "translate3d(-460px, -21px, 0px)", clipPath: 'inset(0 0 0 0)', visibility: "visible"},
+                    {transform: "translate3d(-590px, -21px, 0px)", clipPath: 'inset(0 0 0 0)', visibility: "visible"},
+                    {
+                        transform: "translate3d(-590px, -21px, 0px)",
+                        clipPath: 'inset(10% 10% 10% 10%)',
+                        visibility: "hidden"
+                    },
                 ], {...commonProps, rangeStart: "cover 25%", rangeEnd: "cover 70%"},
             ));
         document.querySelectorAll("#b_-9, #arrow_to_CLIENT_APPROVAL path:last-child")
@@ -531,10 +504,10 @@ class ScrollAnimation {
             ));
         document.querySelectorAll("#arrow_to_PROPOSALS_FOR_MERCHANDISE path, #arrow_to_PAYMENT_COLLECTED")
             .forEach(el => el.animate([
-                {visibility: "visible"},
-                {visibility: "hidden"},
-            ], {...commonProps, rangeStart: "cover 25%", rangeEnd: "cover 26%"},
-        ));
+                    {visibility: "visible"},
+                    {visibility: "hidden"},
+                ], {...commonProps, rangeStart: "cover 25%", rangeEnd: "cover 26%"},
+            ));
         /***/
 
 
@@ -638,9 +611,24 @@ class ScrollAnimation {
             ));
         document.querySelectorAll("#arrow_to_PROPOSALS_FOR_MERCHANDISE line:first-child")
             .forEach((el) => el.animate([
-                    {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)', opacity: 1, visibility: "visible"},
-                    {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 21% 0 )', opacity: 1, visibility: "visible"},
-                    {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 61% 0 )', opacity: 0, visibility: "hidden"},
+                    {
+                        transform: "translate3d(0px, 0px, 0px)",
+                        clipPath: 'inset(0 0 0 0)',
+                        opacity: 1,
+                        visibility: "visible"
+                    },
+                    {
+                        transform: "translate3d(0px, 0px, 0px)",
+                        clipPath: 'inset(0 0 21% 0 )',
+                        opacity: 1,
+                        visibility: "visible"
+                    },
+                    {
+                        transform: "translate3d(0px, 0px, 0px)",
+                        clipPath: 'inset(0 0 61% 0 )',
+                        opacity: 0,
+                        visibility: "hidden"
+                    },
                 ], {...commonProps, rangeStart: "cover 64%", rangeEnd: "cover 80%"},
             ));
         document.querySelectorAll("#b_-15")
@@ -662,105 +650,118 @@ class ScrollAnimation {
 
         document.querySelectorAll("#arrow_to_DREAM_HOME path:first-child")
             .forEach((el) => el.animate([
-                {d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55 L1100,136.55 L1100,150')", visibility: "visible"},
+                    {
+                        d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55 L1100,136.55 L1100,150')",
+                        visibility: "visible"
+                    },
 
-                {d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55  L1100,136.55 L1100,300')", visibility: "visible"},
-                {d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55  L1110,136.55 L1110,300')", visibility: "visible"},
+                    {
+                        d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55  L1100,136.55 L1100,300')",
+                        visibility: "visible"
+                    },
+                    {
+                        d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55  L1110,136.55 L1110,300')",
+                        visibility: "visible"
+                    },
 
-                {d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55  L1110,136.55 L1110,300')", visibility: "visible"},
-                {d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55  L1240,136.55 L1240,300')", visibility: "visible"},
-                {d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55  L1510,136.55 L1510,300')", visibility: "visible"},
-                {d: "path('M1860, 530 L1860, 505.58 L1860,136.55 L1580,136.55 L1580,350')", visibility: "visible"},
-                {d: "path('M1860, 530 L1860, 505.58 L1860,136.55 L1600,136.55 L1600,550')", visibility: "visible"},
-                {d: "path('M1860, 530 L1860, 505.58 L1860,200 L1600,200 L1600,550')", visibility: "visible"},
-                {d: "path('M1860, 530 L1860, 505.58 L1860,250 L1600,250 L1600,550')", visibility: "visible"},
-                {d: "path('M1860, 530 L1860, 505.58 L1860,530 L1600,530 L1600,550')", visibility: "visible"},
-                {d: "path('M1860, 530 L1860, 505.58 L1860,540 L1600,540 L1600,550')", visibility: "hidden"},
+                    {
+                        d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55  L1110,136.55 L1110,300')",
+                        visibility: "visible"
+                    },
+                    {
+                        d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55  L1240,136.55 L1240,300')",
+                        visibility: "visible"
+                    },
+                    {
+                        d: "path('M2058.52, 530 L2058.52, 505.58 L2058.52,136.55  L1510,136.55 L1510,300')",
+                        visibility: "visible"
+                    },
+                    {d: "path('M1860, 530 L1860, 505.58 L1860,136.55 L1580,136.55 L1580,350')", visibility: "visible"},
+                    {d: "path('M1860, 530 L1860, 505.58 L1860,136.55 L1600,136.55 L1600,550')", visibility: "visible"},
+                    {d: "path('M1860, 530 L1860, 505.58 L1860,200 L1600,200 L1600,550')", visibility: "visible"},
+                    {d: "path('M1860, 530 L1860, 505.58 L1860,250 L1600,250 L1600,550')", visibility: "visible"},
+                    {d: "path('M1860, 530 L1860, 505.58 L1860,530 L1600,530 L1600,550')", visibility: "visible"},
+                    {d: "path('M1860, 530 L1860, 505.58 L1860,540 L1600,540 L1600,550')", visibility: "hidden"},
                 ], {...commonProps, rangeStart: "cover 60%", rangeEnd: "cover 90%"},
             ));
 
         document.querySelector("#b_-21").animate([
-                    {transform: "translate3d(0px, 0px, 0px)", visibility: "visible"},
-                    {transform: "translate3d(-200px, 0px, 0px)", visibility: "visible"},
-                ], {...commonProps, rangeStart: "cover 75%", rangeEnd: "cover 77.5%"},);
+            {transform: "translate3d(0px, 0px, 0px)", visibility: "visible"},
+            {transform: "translate3d(-200px, 0px, 0px)", visibility: "visible"},
+        ], {...commonProps, rangeStart: "cover 75%", rangeEnd: "cover 77.5%"},);
 
         document.querySelector("#arrow_to_DREAM_HOME path:last-child").animate([
-                    {opacity: 1, visibility: "visible"},
-                    {opacity: 0, visibility: "hidden"},
-                ], {...commonProps, rangeStart: "cover 70%", rangeEnd: "cover 75%"},);
+            {opacity: 1, visibility: "visible"},
+            {opacity: 0, visibility: "hidden"},
+        ], {...commonProps, rangeStart: "cover 70%", rangeEnd: "cover 75%"},);
 
         document.querySelector("#b_-4").animate([
             {transform: "translate3d(0px, 0px, 0px)", clipPath: 'inset(0 0 0 0)'},
             {transform: "translate3d(231px, 0px, 0px)", clipPath: 'inset(24% 0% 24% 0%)'},
-                ], {...commonProps,  easing: "ease-in-out", rangeStart: "cover 60%", rangeEnd: "cover 75%"},);
+        ], {...commonProps, easing: "ease-in-out", rangeStart: "cover 60%", rangeEnd: "cover 75%"},);
 
         document.querySelector("#final_arrow_1").animate([
             {transform: "translate3d(-235px, 0px, 0px)", visibility: "hidden"},
             {transform: "translate3d(0px, 0px, 0px)", visibility: "visible"},
-                ], {...commonProps, easing: "ease-in-out", fill: "forwards", rangeStart: "cover 60%", rangeEnd: "cover 75%"},);
+        ], {...commonProps, easing: "ease-in-out", fill: "forwards", rangeStart: "cover 60%", rangeEnd: "cover 75%"},);
 
         document.querySelector("#final_arrow_2").animate([
-            {transform: "translate3d(-235px, 0px, 0px)", visibility: "hidden"},
-            {transform: "translate3d(0px, 0px, 0px)", visibility: "visible"},
-                ], {...commonProps, easing: "ease-in-out", fill: "forwards", rangeStart: "cover 60%", rangeEnd: "cover 75%"},
-            );
+                {transform: "translate3d(-235px, 0px, 0px)", visibility: "hidden"},
+                {transform: "translate3d(0px, 0px, 0px)", visibility: "visible"},
+            ], {...commonProps, easing: "ease-in-out", fill: "forwards", rangeStart: "cover 60%", rangeEnd: "cover 75%"},
+        );
 
         document.querySelector("#final_arrow_3").animate([
-            {transform: "translate3d(-235px, 0px, 0px)", visibility: "hidden"},
-            {transform: "translate3d(0px, 0px, 0px)", visibility: "visible"},
-                ], {...commonProps, easing: "ease-in-out", fill: "forwards", rangeStart: "cover 60%", rangeEnd: "cover 75%"},
-            );
+                {transform: "translate3d(-235px, 0px, 0px)", visibility: "hidden"},
+                {transform: "translate3d(0px, 0px, 0px)", visibility: "visible"},
+            ], {...commonProps, easing: "ease-in-out", fill: "forwards", rangeStart: "cover 60%", rangeEnd: "cover 75%"},
+        );
 
         document.querySelector("#final_arrow_4").animate([
-            {transform: "translate3d(0, 0px, 0px)", visibility: "hidden"},
-            {transform: "translate3d(0px, 0px, 0px)", visibility: "visible"},
-                ], {...commonProps, easing: "ease-in-out", fill: "forwards", rangeStart: "cover 80%", rangeEnd: "cover 85%"},
-            );
+                {transform: "translate3d(0, 0px, 0px)", visibility: "hidden"},
+                {transform: "translate3d(0px, 0px, 0px)", visibility: "visible"},
+            ], {...commonProps, easing: "ease-in-out", fill: "forwards", rangeStart: "cover 80%", rangeEnd: "cover 85%"},
+        );
 
         document.querySelector("#final_arrow_5").animate([
-            {transform: "translate3d(0, 0px, 0px)", visibility: "hidden"},
-            {transform: "translate3d(0px, 0px, 0px)", visibility: "visible"},
-                ], {...commonProps, easing: "ease-in-out", fill: "forwards", rangeStart: "cover 90%", rangeEnd: "cover 95%"},
-            );
+                {transform: "translate3d(0, 0px, 0px)", visibility: "hidden"},
+                {transform: "translate3d(0px, 0px, 0px)", visibility: "visible"},
+            ], {...commonProps, easing: "ease-in-out", fill: "forwards", rangeStart: "cover 90%", rangeEnd: "cover 95%"},
+        );
 
         document.querySelector("#SCAN_SPACE").animate([
-            {transform: "translate3d(150px, 220px, 0px) scale(0.75)", opacity: 0, visibility: "hidden"},
-            {transform: "translate3d(0px, 0px, 0px) scale(1)", opacity: 1, visibility: "visible"},
-                ], {...commonProps, easing: "ease-out", fill: "forwards", rangeStart: "cover 90%", rangeEnd: "cover 100%"},
-            );
+                {transform: "translate3d(150px, 220px, 0px) scale(0.75)", opacity: 0, visibility: "hidden"},
+                {transform: "translate3d(0px, 0px, 0px) scale(1)", opacity: 1, visibility: "visible"},
+            ], {...commonProps, easing: "ease-out", fill: "forwards", rangeStart: "cover 90%", rangeEnd: "cover 100%"},
+        );
         document.querySelector("#BUDGET_BAG").animate([
-            {transform: "translate3d(220px, 220px, 0px) scale(0.75)", opacity: 0, visibility: "hidden"},
-            {transform: "translate3d(0px, 0px, 0px) scale(1)", opacity: 1, visibility: "visible"},
-                ], {...commonProps, easing: "ease-out", fill: "forwards", rangeStart: "cover 90%", rangeEnd: "cover 100%"},
-            );
+                {transform: "translate3d(220px, 220px, 0px) scale(0.75)", opacity: 0, visibility: "hidden"},
+                {transform: "translate3d(0px, 0px, 0px) scale(1)", opacity: 1, visibility: "visible"},
+            ], {...commonProps, easing: "ease-out", fill: "forwards", rangeStart: "cover 90%", rangeEnd: "cover 100%"},
+        );
         document.querySelector("#BESPOKE_DESIGN").animate([
-            {transform: "translate3d(320px, 220px, 0px) scale(0.75)", opacity: 0, visibility: "hidden"},
-            {transform: "translate3d(0px, 0px, 0px) scale(1)", opacity: 1, visibility: "visible"},
-                ], {...commonProps, easing: "ease-out", fill: "forwards", rangeStart: "cover 90%", rangeEnd: "cover 100%"},
-            );
+                {transform: "translate3d(320px, 220px, 0px) scale(0.75)", opacity: 0, visibility: "hidden"},
+                {transform: "translate3d(0px, 0px, 0px) scale(1)", opacity: 1, visibility: "visible"},
+            ], {...commonProps, easing: "ease-out", fill: "forwards", rangeStart: "cover 90%", rangeEnd: "cover 100%"},
+        );
         document.querySelector("#SHOP_DESIGN").animate([
-            {transform: "translate3d(390px, 220px, 0px) scale(0.75)", opacity: 0, visibility: "hidden"},
-            {transform: "translate3d(0px, 0px, 0px) scale(1)", opacity: 1, visibility: "visible"},
-                ], {...commonProps, easing: "ease-out", fill: "forwards", rangeStart: "cover 90%", rangeEnd: "cover 100%"},
-            );
+                {transform: "translate3d(390px, 220px, 0px) scale(0.75)", opacity: 0, visibility: "hidden"},
+                {transform: "translate3d(0px, 0px, 0px) scale(1)", opacity: 1, visibility: "visible"},
+            ], {...commonProps, easing: "ease-out", fill: "forwards", rangeStart: "cover 90%", rangeEnd: "cover 100%"},
+        );
 
 
     }
 }
 
-if (window.scrollY) {
-    window.scroll(0, 200); // reset the scroll position to the top left of the document.
-}
-window.addEventListener("scroll", function() {
+const scrollAnimation = new ScrollAnimation();
 
-    const maxHeight = document.body.scrollHeight - window.innerHeight;
-    // console.log(window.pageYOffset, (window.pageYOffset * 100) / maxHeight);
-});
-// if (isSafari()) {
-//     injectSVG({src: INIT_SVG, el: document.getElementById("SVG_wrapper")});
-// } else {
-    const scrollAnimation = new ScrollAnimation();
-    scrollAnimation.init({})
+scrollAnimation
+    .init({})
+
+    /** a top of scrinn draw progres bar. Need for developing and adjasting. 
+     * Don't include it into prodaction
+     ***/
     .then(scrollAnimation.progressBar)
+    
     .then(scrollAnimation.main)
-// }
