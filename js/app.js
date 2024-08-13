@@ -606,7 +606,7 @@ class ScrollAnimation {
             .forEach((el) => el.animate([
                     {clipPath: "circle(600px at right top)", visibility: "visible"},
                     {clipPath: "circle(100px at right top)", visibility: "visible"},
-                    {clipPath: "circle(5px at right top)", visibility: "visible"},
+                    {clipPath: "circle(5px at right top)", visibility: "hidden"},
                 ], {...commonProps, rangeStart: "cover 55%", rangeEnd: "cover 70%"},
             ));
         document.querySelectorAll("#arrow_to_PROPOSALS_FOR_MERCHANDISE line:first-child")
